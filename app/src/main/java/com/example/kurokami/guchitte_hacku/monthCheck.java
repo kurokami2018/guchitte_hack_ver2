@@ -33,9 +33,9 @@ public class monthCheck extends AppCompatActivity {
   
 
   
-  public static void getPast(int){
+  public static void getPast(int pastMonth){
     
-    int pastMonth; //仮に最終ログイン月をpastMonthとする
+  //仮に最終ログイン月をpastMonthとする
     
     if(pastMonth!=month){
       if(month==1){/*月間初期画面を表示する*/

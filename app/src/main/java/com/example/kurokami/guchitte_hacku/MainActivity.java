@@ -28,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
         Calendar cal=Calendar.getInstance();
         int month=monthCheck.getCalender(cal);
+        int lastmonth=SharedPreferences.getInt("lastMonth_data",0);
+        monthCheck.getPast(lastmonth);
+        SharedPreferences.Editor e = SharedPreferences.edit();
+        e.putString(new_month, “month”);
+        e.commit();
 
         forBeginner();//アプリを初回起動の時だけ出てくる説明画像を表示する
 
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new Gson();
         //ファイル(data)から各月のデータを取得してリストを作成する
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
+
 
         ArrayList<Integer> jan_list = new ArrayList<Integer>();//1月のデータArrayリストのインスタンス生成
         List jan = gson.fromJson(sharedPreferences.getString("jan_data", null), new TypeToken<ArrayList<String>>(){}.getType());

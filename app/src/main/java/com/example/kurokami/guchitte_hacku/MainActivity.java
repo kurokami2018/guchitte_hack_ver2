@@ -9,6 +9,7 @@
         import android.view.animation.AlphaAnimation;
         import android.widget.Button;
         import android.widget.EditText;
+        import android.widget.ImageButton;
         import android.widget.ImageView;
         import android.widget.TextView;
         import com.google.gson.Gson;
@@ -80,6 +81,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         kurokami(month);
+
+        //onResume
+    protected void onResume() {
+        super.onResume();
+        setContentView(R.layout.activity_main);
+
+        //月間ページに移動
+         ImageButton monthButton = (ImageButton) findViewById(R.id.b_mon);
+         monthButton.setOnClickListener(new View.OnClickListener() {
+                                            public void onClick(View v) {
+                                                // Sub 画面を起動
+                                                Intent intent = new Intent();
+                                                intent.setClassName("com.example.kurokami.guchitte_hacku", "com.example.kurokami.guchitte_hacku.monthly");
+                                                startActivity(intent);
+                                            }
+                                        });
 
         //呟きを入力・消えるview
         Button button = (Button) findViewById(R.id.button);

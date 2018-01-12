@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         e.commit();//保存実行
         int gruCounter = sharedPreferences.getInt("grumbleCounter", 0);//保存されていたgruCounterを取得
 
-        forBeginner();//アプリを初回起動の時だけ出てくる説明画像を表示する
+       // forBeginner();//アプリを初回起動の時だけ出てくる説明画像を表示する
 
 
         Gson gson = new Gson();
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         }.getType());
 
 
-        data(month, gruCounter);
+      //  data(month, gruCounter);
     }
         //onResume
     protected void onResume() {
@@ -143,7 +143,8 @@ public class MainActivity extends AppCompatActivity {
             else if(month==9)key="sep_data";
             else if(month==10)key="oct_data";
             else if(month==11)key="nov_data";
-            else (month==12)key="dec_data";//ここのエラー解消できませんby今野
+            else if(month==12)key="dec_data";//ここのエラー解消できませんby今野 keyと1行下の1文加えてみましたby菅井
+            else key=null;
 
             Gson gson=new Gson();
             SharedPreferences sharedPreferences =  getSharedPreferences("data", Context.MODE_PRIVATE);

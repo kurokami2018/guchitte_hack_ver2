@@ -43,7 +43,7 @@ class bottleMaker{
             else if(colorNumber==11){//桃色の瓶ができる動画を流す
 
             }
-            else (colorNumber==12){//赤桃色の瓶ができる動画を流す
+            else if(colorNumber==12){//赤桃色の瓶ができる動画を流す
 
             }
 

@@ -15,7 +15,6 @@
         import com.google.gson.Gson;
         import com.google.gson.reflect.TypeToken;
         import java.util.ArrayList;
-        import java.util.List;
         import java.util.Calendar;
         import android.support.v4.app.AppLaunchChecker;
 
@@ -30,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         forBeginner();//アプリを初回起動の時だけ出てくる説明画像を表示する
 
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
-        Calendar cal = Calendar.getInstance();//Calenderを取得、MainActivityでしか取得できないから動かさない
-        int month = monthCheck.getCalender(cal);//今回ログイン月を取得
+        //Calenderを取得、MainActivityでしか取得できないから動かさない
+        int month = monthGetter();//今回ログイン月を取得
         int lastMonth = sharedPreferences.getInt("lastMonth_data", 0);//前回のログインした月をしまっておく
         monthCheck.getPast(lastMonth, month);//前回のログイン月と今回のログイン月を比較するメソッドに前回ログイン月を渡す
         SharedPreferences.Editor e = sharedPreferences.edit();
@@ -39,43 +38,43 @@ public class MainActivity extends AppCompatActivity {
         e.commit();//保存実行
         int gruCounter = sharedPreferences.getInt("grumbleCounter", 0);//保存されていたgruCounterを取得
 
-
+//ここのりさちゃんの修正箇所(見やすくしてくれたのかな？)を私も直してて致命的だったので私のを採用しました、ごめんね
         Gson gson = new Gson();//ファイル(data)から各月のデータを取得してリストを作成する
         ArrayList<Integer> jan = new ArrayList<Integer>();//1月のデータを格納するArrayListのjanを生成
-        jan = gson.fromJson(sharedPreferences.getString("jan_data", null), new TypeToken<ArrayList<String>>(){}.getType());
+        jan = gson.fromJson(sharedPreferences.getString("jan_data", null), new TypeToken<ArrayList<Integer>>(){}.getType());
 
         ArrayList<Integer> feb = new ArrayList<Integer>();//2月
-        feb = gson.fromJson(sharedPreferences.getString("feb_data", null), new TypeToken<ArrayList<String>>(){}.getType());
+        feb = gson.fromJson(sharedPreferences.getString("feb_data", null), new TypeToken<ArrayList<Integer>>(){}.getType());
 
         ArrayList<Integer> mar = new ArrayList<Integer>();//3月
-        mar = gson.fromJson(sharedPreferences.getString("mar_data", null), new TypeToken<ArrayList<String>>(){}.getType());
+        mar = gson.fromJson(sharedPreferences.getString("mar_data", null), new TypeToken<ArrayList<Integer>>(){}.getType());
 
         ArrayList<Integer> apr = new ArrayList<Integer>();//4月
-        apr = gson.fromJson(sharedPreferences.getString("apr_data", null), new TypeToken<ArrayList<String>>(){}.getType());
+        apr = gson.fromJson(sharedPreferences.getString("apr_data", null), new TypeToken<ArrayList<Integer>>(){}.getType());
 
         ArrayList<Integer> may = new ArrayList<Integer>();//5月
-        may = gson.fromJson(sharedPreferences.getString("may_data", null), new TypeToken<ArrayList<String>>(){}.getType());
+        may = gson.fromJson(sharedPreferences.getString("may_data", null), new TypeToken<ArrayList<Integer>>(){}.getType());
 
         ArrayList<Integer> jun = new ArrayList<Integer>();//6月
-        jun = gson.fromJson(sharedPreferences.getString("jun_data", null), new TypeToken<ArrayList<String>>(){}.getType());
+        jun = gson.fromJson(sharedPreferences.getString("jun_data", null), new TypeToken<ArrayList<Integer>>(){}.getType());
 
         ArrayList<Integer> jul = new ArrayList<Integer>();//7月
-        jul = gson.fromJson(sharedPreferences.getString("jul_data", null), new TypeToken<ArrayList<String>>(){}.getType());
+        jul = gson.fromJson(sharedPreferences.getString("jul_data", null), new TypeToken<ArrayList<Integer>>(){}.getType());
 
         ArrayList<Integer> aug = new ArrayList<Integer>();//8月
-        aug = gson.fromJson(sharedPreferences.getString("aug_data", null), new TypeToken<ArrayList<String>>(){}.getType());
+        aug = gson.fromJson(sharedPreferences.getString("aug_data", null), new TypeToken<ArrayList<Integer>>(){}.getType());
 
         ArrayList<Integer> sep = new ArrayList<Integer>();//9月
-        sep = gson.fromJson(sharedPreferences.getString("sep_data", null), new TypeToken<ArrayList<String>>(){}.getType());
+        sep = gson.fromJson(sharedPreferences.getString("sep_data", null), new TypeToken<ArrayList<Integer>>(){}.getType());
 
         ArrayList<Integer> oct = new ArrayList<Integer>();//10月
-       oct = gson.fromJson(sharedPreferences.getString("oct_data", null), new TypeToken<ArrayList<String>>(){}.getType());
+       oct = gson.fromJson(sharedPreferences.getString("oct_data", null), new TypeToken<ArrayList<Integer>>(){}.getType());
 
         ArrayList<Integer> nov = new ArrayList<Integer>();//11月
-        nov = gson.fromJson(sharedPreferences.getString("nov_data", null), new TypeToken<ArrayList<String>>(){}.getType());
+        nov = gson.fromJson(sharedPreferences.getString("nov_data", null), new TypeToken<ArrayList<Integer>>(){}.getType());
 
         ArrayList<Integer> dec = new ArrayList<Integer>();//12月
-        dec = gson.fromJson(sharedPreferences.getString("dec_data", null), new TypeToken<ArrayList<String>>(){}.getType());
+        dec = gson.fromJson(sharedPreferences.getString("dec_data", null), new TypeToken<ArrayList<Integer>>(){}.getType());
 
 
         data(month, gruCounter);
@@ -128,16 +127,16 @@ public class MainActivity extends AppCompatActivity {
             else if(month==9)key="sep_data";
             else if(month==10)key="oct_data";
             else if(month==11)key="nov_data";
-            else if(month==12)key="dec_data";//ここのエラー解消できませんby今野 ifと1行下の1文加えてみましたby菅井
+            else if(month==12)key="dec_data";//ここのエラー解消できませんby今野 ifと1行下の1文加えてみましたby菅井 ありがとう！by今野
             else key=null;
 
             Gson gson=new Gson();
             SharedPreferences sharedPreferences =  getSharedPreferences("data", Context.MODE_PRIVATE);
-            List list = gson.fromJson(sharedPreferences.getString(key, null), new TypeToken<List>(){}.getType());
+            ArrayList list = gson.fromJson(sharedPreferences.getString(key, null), new TypeToken<ArrayList<Integer>>(){}.getType());
             list.add(colorNumber);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("data", gson.toJson(list));
-            editor.apply();
+            editor.commit();
         }
 
     }
@@ -192,6 +191,33 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor e = sharedPreferences.edit();
         int gruCounter=sharedPreferences.getInt("grumbleCounter",0);
         return gruCounter;
+    }
+    ArrayList getMonthLog(int month){//指定した月の配列をリターンするメソッド
+        Gson gson=new Gson();
+        SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
+
+        String key;
+        if(month==1)key="jan_data";
+        else if(month==2)key="feb_data";
+        else if(month==3)key="mar_data";
+        else if(month==4)key="apr_data";
+        else if(month==5)key="may_data";
+        else if(month==6)key="jun_data";
+        else if(month==7)key="jul_data";
+        else if(month==8)key="aug_data";
+        else if(month==9)key="sep_data";
+        else if(month==10)key="oct_data";
+        else if(month==11)key="nov_data";
+        else if(month==12)key="dec_data";
+        else key=null;
+
+        ArrayList monthLog = gson.fromJson(sharedPreferences.getString(key, null), new TypeToken<ArrayList<Integer>>(){}.getType());
+        return monthLog;
+    }
+    int monthGetter(){
+        Calendar cal = Calendar.getInstance();
+        int month = monthCheck.getCalender(cal);
+        return month;
     }
 }
 

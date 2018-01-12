@@ -16,47 +16,89 @@ public class monthly extends AppCompatActivity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly);
+        int month=MainActivity.monthGetter();
+        int ypos=1000000;//初期値入れてくださいby今野
+        tiedBottle(month,ypos);
     }
 
-/*
-    void tapGetter_S() {//タップされたことを感知して画面を切り替える,月間画面を表示する
-        //XMLファイルの設定を呼び出すor画像を表示する
-
-    }
-    void tapGetter_C(){//タップされたことを感知して画面を切り替える、通常の呟く画面を表示する
-
-    }
-    monthly(list<int> jan,list<int> feb,list<int> mar,list<int> apr,list<int> may,list<int> jun,list<int> jul,list<int> aug,list<int> sep,list<int> oct,list<int> nov,list<int> dec) {
-        for (int i=0; i < 50; i++) {//1月のリストデータを元に瓶を紐につなげる
-
-        }
-
-    }
-
-
-    void setBottle(list<int> list,int i) {
-        if(list[i]==1){
-
-        }
-        if(list[i]==2){
-
-        }
-        if(list[i]==3){
-
-        }
-        if(list[i]==4){
-
-        }
-        if(list[i]==5){
-
-        }
-        if(list[i]==6){
-
-        }
-        else{
-
+    void tiedBottle(int month,int ypos){
+        ArrayList thisMonth;
+        int number,xpos;
+        for(int i=0;i<12;i++){
+            xpos=100000000;//初期値入れてくださいby今野
+            thisMonth=MainActivity.getMonthLog(month+i);
+            drawMonthPic(month+1);
+            for(int j=0;j<thisMonth.size();j++){
+                number= (int) thisMonth.get(j);
+                if(number==0)break;
+                xpos=xpos+(50000000*j);//横にずらしていく数字を直してくださいby今野
+                setBottle(number,xpos,ypos);
+            }
+            ypos=ypos+1000000000;//縦にずらしていく数字を直してくださいby今野
         }
     }
-    */
+
+
+    void setBottle(int colorNumber,int xpos,int ypos) {
+        if(colorNumber==1){
+
+        }
+        if(colorNumber==2){
+
+        }
+        if(colorNumber==3){
+
+        }
+        if(colorNumber==4){
+
+        }
+        if(colorNumber==5){
+
+        }
+        if(colorNumber==6){
+
+        }
+        if(colorNumber==7){
+
+        }
+        if(colorNumber==8){
+
+        }
+        if(colorNumber==9){
+
+        }
+        if(colorNumber==10){
+
+        }
+        if(colorNumber==11){
+
+        }
+        if(colorNumber==12){
+
+        }
+    }
+    int newYearChecker(int month){//monthに１ずつ足していって13月とかができないようにするためのもの
+        if(month>12){
+            month=month-12;
+            return month;
+        }
+        else return month;
+    }
+    void drawMonthPic(int month){//未完成、追記お願いしますby今野
+        //今日が何月か所得してその月が一番上に来るようにするなら、何月って書いてある絵も動かさないといけないかと思ったので作りました
+        if(month==1);//"1月"って書いてある絵を貼る
+        if(month==2);
+        if(month==3);
+        if(month==4);
+        if(month==5);
+        if(month==6);
+        if(month==7);
+        if(month==8);
+        if(month==9);
+        if(month==10);
+        if(month==11);
+        if(month==12);
+    }
+
 }
 

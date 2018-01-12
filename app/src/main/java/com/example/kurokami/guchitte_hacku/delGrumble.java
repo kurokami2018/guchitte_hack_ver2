@@ -1,4 +1,4 @@
-package com.example.kurokami.guchitte2018;
+package com.example.kurokami.guchitte_hacku;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;

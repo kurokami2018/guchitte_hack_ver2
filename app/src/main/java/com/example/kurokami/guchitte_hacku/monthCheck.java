@@ -1,4 +1,4 @@
-package com.example.kurokami.guchitte2018;
+package com.example.kurokami.guchitte_hacku;
 
 import android.support.v7.app.AppCompatActivity;
 import java.util.Calendar;//日付の操作・計算などを扱うクラス

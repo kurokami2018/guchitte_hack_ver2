@@ -1,5 +1,5 @@
 
-    package com.example.kurokami.guchitte2018;
+    package com.example.kurokami.guchitte_hacku;
         import android.content.Context;
         import android.content.Intent;
         import android.content.SharedPreferences;

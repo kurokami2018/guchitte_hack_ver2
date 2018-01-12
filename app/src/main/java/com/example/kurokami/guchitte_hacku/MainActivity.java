@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-/*
+
         Calendar cal = Calendar.getInstance();
         int month = monthCheck.getCalender(cal);
         int lastmonth = SharedPreferences.getInt("lastMonth_data", 0);
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         kurokami(month);
-        */
+
     }
         //onResume
     protected void onResume() {
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-/*
+
     void kurokami(int month,int gruCounter){
 
         int colorNumber=bottleMaker.gruConterChecker(gruCounter);
@@ -168,5 +168,5 @@ public class MainActivity extends AppCompatActivity {
             //タップされたら画面を閉じるみたいな機能をつけて完了のはず
         }
     }
-    */
+
 }

@@ -1,11 +1,12 @@
 package com.example.kurokami.guchitte_hacku;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class monthly extends MainActivity{
+public class monthly extends AppCompatActivity{
     //月間画面を表示する。listを12ヶ月分全部受け取ってx,y座標を指定してそこに瓶を貼り付けるプログラム
     //スクロールを考慮する必要あり
     //うまくいくなら当月のデータが画面の上端にくるようにするといいと思う

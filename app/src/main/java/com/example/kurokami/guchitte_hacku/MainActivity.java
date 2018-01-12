@@ -18,6 +18,7 @@
         import java.util.List;
         import java.util.Calendar;
         import android.support.v4.app.AppLaunchChecker;
+        import java.util.Arrays;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -28,14 +29,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
-        Calendar cal = Calendar.getInstance();//Calenderを取得、MainActivityでしか取得できないから動かさない
-        int month = monthCheck.getCalender(cal);//今回ログイン月を取得
-        int lastMonth = sharedPreferences.getInt("lastMonth_data", 0);//前回のログインした月をしまっておく
-        monthCheck.getPast(lastMonth, month);//前回のログイン月と今回のログイン月を比較するメソッドに前回ログイン月を渡す
+        Calendar cal=Calendar.getInstance();//Calenderを取得、MainActivityでしか取得できないから動かさない
+        int month=monthCheck.getCalender(cal);//今回ログイン月を取得
+        int lastMonth=sharedPreferences.getInt("lastMonth_data",0);//前回のログインした月をしまっておく
+        monthCheck.getPast(lastMonth,month);//前回のログイン月と今回のログイン月を比較するメソッドに前回ログイン月を渡す
         SharedPreferences.Editor e = sharedPreferences.edit();
         e.putInt("new_month", month);//キーをnew_monthとしてmonthをプレファレンスに保存
         e.commit();//保存実行
-        int gruCounter = sharedPreferences.getInt("grumbleCounter", 0);//保存されていたgruCounterを取得
+        int gruCounter=sharedPreferences.getInt("grumbleCounter",0);//保存されていたgruCounterを取得
 
         forBeginner();//アプリを初回起動の時だけ出てくる説明画像を表示する
 
@@ -43,60 +44,45 @@ public class MainActivity extends AppCompatActivity {
         Gson gson = new Gson();
         //ファイル(data)から各月のデータを取得してリストを作成する
 
-
         ArrayList<Integer> jan_list = new ArrayList<Integer>();//1月のデータArrayリストのインスタンス生成
-        jan_list = gson.fromJson(sharedPreferences.getString("jan_data", null), new TypeToken<ArrayList<String>>() {
-        }.getType());
+        List jan = gson.fromJson(sharedPreferences.getString("jan_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
         ArrayList<Integer> feb_list = new ArrayList<Integer>();//2月
-        feb_list = gson.fromJson(sharedPreferences.getString("feb_data", null), new TypeToken<ArrayList<String>>() {
-        }.getType());
+        List feb = gson.fromJson(sharedPreferences.getString("feb_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
         ArrayList<Integer> mar_list = new ArrayList<Integer>();//3月
-        mar_list = gson.fromJson(sharedPreferences.getString("mar_data", null), new TypeToken<ArrayList<String>>() {
-        }.getType());
+        List mar = gson.fromJson(sharedPreferences.getString("mar_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
         ArrayList<Integer> apr_list = new ArrayList<Integer>();//4月
-        apr_list = gson.fromJson(sharedPreferences.getString("apr_data", null), new TypeToken<ArrayList<String>>() {
-        }.getType());
+        List apr = gson.fromJson(sharedPreferences.getString("apr_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
         ArrayList<Integer> may_list = new ArrayList<Integer>();//5月
-        may_list = gson.fromJson(sharedPreferences.getString("may_data", null), new TypeToken<ArrayList<String>>() {
-        }.getType());
+        List may = gson.fromJson(sharedPreferences.getString("may_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
         ArrayList<Integer> jun_list = new ArrayList<Integer>();//6月
-        jun_list = gson.fromJson(sharedPreferences.getString("jun_data", null), new TypeToken<ArrayList<String>>() {
-        }.getType());
+        List jun = gson.fromJson(sharedPreferences.getString("jun_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
         ArrayList<Integer> jul_list = new ArrayList<Integer>();//7月
-        jul_list = gson.fromJson(sharedPreferences.getString("jul_data", null), new TypeToken<ArrayList<String>>() {
-        }.getType());
+        List jul = gson.fromJson(sharedPreferences.getString("jul_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
         ArrayList<Integer> aug_list = new ArrayList<Integer>();//8月
-        aug_list = gson.fromJson(sharedPreferences.getString("aug_data", null), new TypeToken<ArrayList<String>>() {
-        }.getType());
+        List aug = gson.fromJson(sharedPreferences.getString("aug_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
         ArrayList<Integer> sep_list = new ArrayList<Integer>();//9月
-        sep_list = gson.fromJson(sharedPreferences.getString("sep_data", null), new TypeToken<ArrayList<String>>() {
-        }.getType());
+        List sep = gson.fromJson(sharedPreferences.getString("sep_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
         ArrayList<Integer> oct_list = new ArrayList<Integer>();//10月
-        oct_list = gson.fromJson(sharedPreferences.getString("oct_data", null), new TypeToken<ArrayList<String>>() {
-        }.getType());
+        List oct = gson.fromJson(sharedPreferences.getString("oct_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
         ArrayList<Integer> nov_list = new ArrayList<Integer>();//11月
-        nov_list = gson.fromJson(sharedPreferences.getString("nov_data", null), new TypeToken<ArrayList<String>>() {
-        }.getType());
+        List nov = gson.fromJson(sharedPreferences.getString("nov_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
         ArrayList<Integer> dec_list = new ArrayList<Integer>();//12月
-        dec_list = gson.fromJson(sharedPreferences.getString("dec_data", null), new TypeToken<ArrayList<String>>() {
-        }.getType());
+        List dec = gson.fromJson(sharedPreferences.getString("dec_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
 
-        data(month, gruCounter);
-    }
-
-    //onResume
+        data(month,gruCounter);
+        //onResume
     protected void onResume() {
         super.onResume();
         setContentView(R.layout.activity_main);
@@ -120,9 +106,40 @@ public class MainActivity extends AppCompatActivity {
                 TextView textView = (TextView) findViewById(R.id.textView);
                 AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
                 fadein_image.setDuration(1000);
-                inputMessage.inputMessage(editText, textView);
+                inputMessage.inputMessage(editText,textView);
             }
         });
+    }
+
+    void data(int month,int gruCounter){
+
+        int colorNumber=bottleMaker.gruChecker(gruCounter);
+        if(colorNumber!=0)gruCounter=0;
+        else{
+            //colorNumberをリストに追加する
+
+            String key;
+            if(month==1)key="jan_data";
+            else if(month==2)key="feb_data";
+            else if(month==3)key="mar_data";
+            else if(month==4)key="apr_data";
+            else if(month==5)key="may_data";
+            else if(month==6)key="jun_data";
+            else if(month==7)key="jul_data";
+            else if(month==8)key="aug_data";
+            else if(month==9)key="sep_data";
+            else if(month==10)key="oct_data";
+            else if(month==11)key="nov_data";
+            else (month==12)key="dec_data";//ここのエラー解消できませんby今野
+
+            Gson gson=new Gson();
+            SharedPreferences sharedPreferences =  getSharedPreferences("data", Context.MODE_PRIVATE);
+            List list = gson.fromJson(sharedPreferences.getString(key, null), new TypeToken<List>(){}.getType());
+            list.add(colorNumber);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("data", gson.toJson(list));
+            editor.apply();
+        }
 
     }
 
@@ -130,10 +147,9 @@ public class MainActivity extends AppCompatActivity {
         boolean before = AppLaunchChecker.hasStartedFromLauncher(this);
         if (before == false) {
             ImageView imageView = new ImageView(this);//表示する場所と思われるthisか？
-            imageView.setImageResource(res.drawable.scene_1);//ここのメソッド使うなら説明画面のファイル名で変更しておいてくださいby今野
+            imageView.setImageResource(res.drawable.scene_1);
             setContentView(imageView);
-
-            //これって消滅でいいんだっけ？使い方の説明を初回起動時のみ表示するためのメソッドだよ
+            //ファイル名わかったら書き換えること
 
             //タップされたら画面を閉じるみたいな機能をつけて完了のはず
         }
@@ -175,4 +191,11 @@ public class MainActivity extends AppCompatActivity {
         e.putInt("grumbleCounter",gruCounter);
         e.commit();
     }
+    void addgruCounter(int gruCounter){
+
+        SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
+        SharedPreferences.Editor e = sharedPreferences.edit();
+    }
+    }
+
 }

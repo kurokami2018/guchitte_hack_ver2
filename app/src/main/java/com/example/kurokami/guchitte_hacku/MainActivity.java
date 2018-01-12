@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             else if(month==9)key="sep_data";
             else if(month==10)key="oct_data";
             else if(month==11)key="nov_data";
-            else if(month==12)key="dec_data";//ここのエラー解消できませんby今野 keyと1行下の1文加えてみましたby菅井
+            else if(month==12)key="dec_data";//ここのエラー解消できませんby今野 ifと1行下の1文加えてみましたby菅井
             else key=null;
 
             Gson gson=new Gson();

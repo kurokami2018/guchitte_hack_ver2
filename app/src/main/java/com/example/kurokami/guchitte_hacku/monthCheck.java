@@ -43,11 +43,16 @@ public class monthCheck extends AppCompatActivity {
 //仮に最終ログイン月をpastMonthとする
     
     if(pastMonth!=month){
-      if((month==1) && (pastMonth==0)){/*月間初期画面を表示する*/
-                    /*愚痴回数カウンターを0にするメソッド*/
-      }else{/*愚痴回数カウンタを0にするメソッド*/}};
+      if((month==1) && (pastMonth==0)){//&&ではなく||じゃない？by今野
+        MainActivity.emptyMonthLog();/*月間初期画面を表示する*/
+        MainActivity.emptyGruCounter();/*愚痴回数カウンターを0にするメソッド*/
+      }
+      else{
+        MainActivity.emptyGruCounter();/*愚痴回数カウンタを0にするメソッド*/
+      }
+    }
     
-    if(pastMonth==month){/*呟く画面を表示*/};
+    if(pastMonth==month){/*呟く画面を表示*/}
     
   }
 

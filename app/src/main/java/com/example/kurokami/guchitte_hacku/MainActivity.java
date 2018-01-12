@@ -79,7 +79,19 @@ public class MainActivity extends AppCompatActivity {
         List dec = gson.fromJson(sharedPreferences.getString("dec_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
 
-                kurokami(month);
+        kurokami(month);
+
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                EditText editText = (EditText) findViewById(R.id.editText);
+                TextView textView = (TextView) findViewById(R.id.textView);
+                AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
+                fadein_image.setDuration(1000);
+                inputMessage.inputMessage(editText,textView);
+            }
+        });
+
     }
 
     void kurokami(int month,int gruCounter){

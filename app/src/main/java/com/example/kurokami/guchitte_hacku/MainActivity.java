@@ -72,39 +72,8 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Integer> dec_list = new ArrayList<Integer>();//12月
         List dec = gson.fromJson(sharedPreferences.getString("dec_data", null), new TypeToken<ArrayList<String>>(){}.getType());
 
-        //月間画面に移動
-        Button monthButton = (Button)findViewById(R.id.monthButton);
-        monthButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Sub 画面を起動
-                Intent intent = new Intent();
-                intent.setClassName("com.example.kurokami.guchitte.feature", "com.example.kurokami.guchitte.feature.monthly");
-                startActivity(intent);
-            }
-        });
 
-        Button settingButton = (Button)findViewById(R.id.settingButton);
-        settingButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Sub 画面を起動
-                Intent intent = new Intent();
-                intent.setClassName("com.example.kurokami.guchitte.feature", "com.example.kurokami.guchitte.feature.displaySetting");
-                startActivity(intent);
-            }
-        });
-
-        //呟く
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                EditText editText = (EditText) findViewById(R.id.editText);
-                TextView textView = (TextView) findViewById(R.id.textView);
-                AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
-                fadein_image.setDuration(1000);
-                inputMessage.inputMessage(editText,textView);
-            }
-        });
-        kurokami(month);
+                kurokami(month);
     }
 
     void kurokami(int month,int gruCounter){

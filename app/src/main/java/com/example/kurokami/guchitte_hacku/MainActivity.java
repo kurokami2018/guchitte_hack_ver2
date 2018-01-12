@@ -4,7 +4,6 @@
         import android.content.Intent;
         import android.content.SharedPreferences;
         import android.os.Bundle;
-        import android.support.v4.app.AppLaunchChecker;
         import android.support.v7.app.AppCompatActivity;
         import android.view.View;
         import android.view.animation.AlphaAnimation;
@@ -141,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void forBeginner() {
-        boolean before = hasStartedFromLauncher(getApplicationContext());onActivityCreate(this);
+        boolean before = AppLaunchChecker.hasStartedFromLauncher(this);
         if (before == false) {
             ImageView imageView = new ImageView(this);//表示する場所と思われるthisか？
             imageView.setImageResource(res.drawable.scene_1);

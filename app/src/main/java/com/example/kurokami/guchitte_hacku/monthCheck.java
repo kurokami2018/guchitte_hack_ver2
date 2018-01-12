@@ -33,7 +33,7 @@ public class monthCheck extends AppCompatActivity {
   
 
   
-  public static void main(String[] args){
+  public static void getPast(int){
     
     int pastMonth; //仮に最終ログイン月をpastMonthとする
     

@@ -3,6 +3,13 @@ package com.example.kurokami.guchitte_hacku;
 import android.support.v7.app.AppCompatActivity;
 import java.util.Calendar;//日付の操作・計算などを扱うクラス
 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+
 
 /*
 月(年)が変わった時のデータ取得方法 → 前回ログインしたときの月(month)が保存できれば...！！
@@ -31,14 +38,12 @@ public class monthCheck extends AppCompatActivity {
   }
   
   
-
-  
-  public static void getPast(int pastMonth){
+  public static void getPast(int){
     
-  //仮に最終ログイン月をpastMonthとする
+    int pastMonth; //仮に最終ログイン月をpastMonthとする
     
     if(pastMonth!=month){
-      if(month==1){/*月間初期画面を表示する*/
+      if((month==1) && (pastMonth==0)){/*月間初期画面を表示する*/
                     /*愚痴回数カウンターを0にするメソッド*/
       }else{/*愚痴回数カウンタを0にするメソッド*/}};
     

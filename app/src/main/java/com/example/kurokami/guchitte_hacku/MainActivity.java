@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         e.commit();//保存実行
         int gruCounter = sharedPreferences.getInt("grumbleCounter", 0);//保存されていたgruCounterを取得
 
-       // forBeginner();//アプリを初回起動の時だけ出てくる説明画像を表示する
+        forBeginner();//アプリを初回起動の時だけ出てくる説明画像を表示する
 
 
         Gson gson = new Gson();
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         }.getType());
 
 
-      //  data(month, gruCounter);
+        data(month, gruCounter);
     }
         //onResume
     protected void onResume() {

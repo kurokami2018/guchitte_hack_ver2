@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     void emptyMonthLog(){//ArrayListの中身だけ消去する
-        SharedPreferences sharedPreferences = this.getSharedPreferences("data", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
         SharedPreferences.Editor e = sharedPreferences.edit();
         e.remove("1");
         e.remove("2");

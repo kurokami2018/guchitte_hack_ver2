@@ -221,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
         int month = monthCheck.getCalender(cal);
         return month;
     }
-    //愚痴カウンタに応じて背景画面の変更をします
+    //<未完成>愚痴カウンタに応じて背景画面の変更をします
     void backgroundChange(){
         int count=getCounter();
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.main);

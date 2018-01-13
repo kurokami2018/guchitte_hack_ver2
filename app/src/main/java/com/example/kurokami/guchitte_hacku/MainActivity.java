@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         Gson gson = new Gson();//ファイル(data)から各月のデータを取得してリストを作成する
         ArrayList<Integer> gruCounter = new ArrayList<Integer>();
-        gruCounter = gson.fromJson(sharedPreferences.getString("GrumbleData", null), new TypeToken<ArrayList<Integer>>(){}.getType());
+        gruCounter = gson.fromJson(sharedPreferences.getString("GrumbleData", ""), new TypeToken<ArrayList<Integer>>(){}.getType());
 
     }
     //onResume
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList gruLog=getMonthLog();
         month=month-1;
         int gruCounter=(int)gruLog.get(month);
-        return gruCounter;
+        return (int)gruCounter;
     }
     ArrayList getMonthLog(){//愚痴配列をリターンするメソッド
         Gson gson=new Gson();
@@ -140,13 +140,9 @@ public class MainActivity extends AppCompatActivity {
     void backgroundChange(int month){
         int count=getCounter(month);
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.main);
-        if(count==0){
-            layout.setBackgroundResource(R.drawable.back_1_r);
-        }else if(count==2){
-            layout.setBackgroundResource(R.drawable.back_2_r);
-        } else if(count==5) {
-            layout.setBackgroundResource(R.drawable.back_3_r);
-        }
+        if(count==0)layout.setBackgroundResource(R.drawable.back_1_r);
+        if(count==2)layout.setBackgroundResource(R.drawable.back_2_r);
+        if(count==5)layout.setBackgroundResource(R.drawable.back_3_r);
     }
     //葉っぱのエフェクト効果設定
     void leaf(){

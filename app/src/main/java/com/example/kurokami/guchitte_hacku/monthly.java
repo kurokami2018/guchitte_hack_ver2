@@ -8,6 +8,7 @@ import android.view.animation.AlphaAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -24,15 +25,15 @@ public class monthly extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly);
 
-
         int month = MainActivity.monthGetter();
         // int ypos=1000000;//初期値入れてくださいby今野
         // tiedBottle(month,ypos);
     }
     void set() {//各月の愚痴カウンタの数を呼び出し・表示数の瓶を可視化
 
-
-                //findViewById(R.id.).setVisibility(View.VISIBLE);　可視化で使う
+        //int viewId = getResources().getIdentifier("idの名前を入れる", "id", getPackageName());
+        //ImageView imageView = (ImageView)findViewById(viewId);
+        //imageView.setVisibility(View.VISIBLE);　可視化
 
     }
 

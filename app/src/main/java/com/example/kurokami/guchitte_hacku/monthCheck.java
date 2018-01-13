@@ -25,8 +25,6 @@ public class monthCheck extends AppCompatActivity {
     int day = cal.get(Calendar.DATE);//日を取得
 
     return month;
-
-
   }
   
 

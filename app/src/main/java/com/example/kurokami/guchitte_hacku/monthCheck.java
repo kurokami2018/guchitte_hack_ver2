@@ -15,18 +15,6 @@ import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 
 
-/*
-月(年)が変わった時のデータ取得方法 → 前回ログインしたときの月(month)が保存できれば...！！
-[ログインするたびにmonth(月)を保存する。
-次にログインした時に保存してあったmonthとその日に保存したmonthが違っていたら愚痴カウンターを0に(12月→1月のみ例外、白紙にする)。
-同じだったら呟く画面を表示。]
-※白紙にする=背景画像を挿入する
-*/
-
-/*
-List beforeDate=new ArrayList();
-beforeDate.add(month); わからん
-*/
 
 public class monthCheck extends AppCompatActivity {
 

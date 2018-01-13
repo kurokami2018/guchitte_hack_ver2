@@ -38,18 +38,25 @@ public class MainActivity extends AppCompatActivity {
         int lastMonth = sharedPreferences.getInt("lastMonth_data", 0);//前回のログインした月をしまっておく
 
         if((lastMonth!=month)&&((month==1) || (lastMonth==0))) {//&&ではなく||じゃないかな　by今野 ほんとだ！ありがとう！by小松
-            SharedPreferences.Editor e = sharedPreferences.edit();//emptyMonthLogを直書き
-            e.remove("GrumbleData");
-            e.commit();//月間初期画面を表示する
+            emptyMonthLog();
         }
 
         SharedPreferences.Editor e = sharedPreferences.edit();
         e.putInt("new_month", month);//キーをnew_monthとしてmonthをプレファレンスに保存
         e.commit();//保存実行
 
-        Gson gson = new Gson();//ファイル(data)から各月のデータを取得してリストを作成する
-        ArrayList<Integer> gruCounter = new ArrayList<Integer>();
-        gruCounter = gson.fromJson(sharedPreferences.getString("GrumbleData", ""), new TypeToken<ArrayList<Integer>>(){}.getType());
+        int jan = sharedPreferences.getInt("1", 0);
+        int feb = sharedPreferences.getInt("2", 0);
+        int mar = sharedPreferences.getInt("3", 0);
+        int apr = sharedPreferences.getInt("4", 0);
+        int may = sharedPreferences.getInt("5", 0);
+        int jun = sharedPreferences.getInt("6", 0);
+        int jul = sharedPreferences.getInt("7", 0);
+        int aug = sharedPreferences.getInt("8", 0);
+        int sep = sharedPreferences.getInt("9", 0);
+        int oct = sharedPreferences.getInt("10", 0);
+        int nov = sharedPreferences.getInt("11", 0);
+        int dec = sharedPreferences.getInt("12", 0);
 
     }
     //onResume
@@ -99,10 +106,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     void emptyMonthLog(){//ArrayListの中身だけ消去する
-        Gson gson=new Gson();
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
         SharedPreferences.Editor e = sharedPreferences.edit();
-        e.remove("GrumbleData");
+        e.remove("1");
+        e.remove("2");
+        e.remove("3");
+        e.remove("4");
+        e.remove("5");
+        e.remove("6");
+        e.remove("7");
+        e.remove("8");
+        e.remove("9");
+        e.remove("10");
+        e.remove("11");
+        e.remove("12");
         e.commit();
     }
     int getThisMonth(){
@@ -111,29 +128,52 @@ public class MainActivity extends AppCompatActivity {
         return month;
     }
     void addgruCounter(int month){//gruCounterに++するメソッド引数なし、リターンもなし
-        Gson gson=new Gson();
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
         SharedPreferences.Editor e = sharedPreferences.edit();
-        ArrayList gruLog = gson.fromJson(sharedPreferences.getString("GrumbleData", null), new TypeToken<ArrayList<Integer>>(){}.getType());
-        month=month-1;
-        int gruCounter=(int)gruLog.get(month);
+        int gruCounter = 0;
+        if(month==1)gruCounter=sharedPreferences.getInt("1", 0);
+        if(month==2)gruCounter=sharedPreferences.getInt("2", 0);
+        if(month==3)gruCounter=sharedPreferences.getInt("3", 0);;
+        if(month==4)gruCounter=sharedPreferences.getInt("4", 0);
+        if(month==5)gruCounter=sharedPreferences.getInt("5", 0);
+        if(month==6)gruCounter=sharedPreferences.getInt("6", 0);
+        if(month==7)gruCounter=sharedPreferences.getInt("7", 0);
+        if(month==8)gruCounter=sharedPreferences.getInt("8", 0);
+        if(month==9)gruCounter=sharedPreferences.getInt("9", 0);
+        if(month==10)gruCounter=sharedPreferences.getInt("10", 0);
+        if(month==11)gruCounter=sharedPreferences.getInt("11", 0);
+        if(month==12)gruCounter=sharedPreferences.getInt("12", 0);
         gruCounter++;
-        gruLog.set(month,gruCounter);
-        e.putString("GrumbleData", gson.toJson(gruLog));
+        if(month==1)e.putInt("1",gruCounter);
+        if(month==2)e.putInt("2",gruCounter);
+        if(month==3)e.putInt("3",gruCounter);
+        if(month==4)e.putInt("4",gruCounter);
+        if(month==5)e.putInt("5",gruCounter);
+        if(month==6)e.putInt("6",gruCounter);
+        if(month==7)e.putInt("7",gruCounter);
+        if(month==8)e.putInt("8",gruCounter);
+        if(month==9)e.putInt("9",gruCounter);
+        if(month==10)e.putInt("10",gruCounter);
+        if(month==11)e.putInt("11",gruCounter);
+        if(month==12)e.putInt("12",gruCounter);
         e.commit();
     }
     int getCounter(int month){//gruCounterを獲得するメソッド
-        ArrayList gruLog=getMonthLog();
-        month=month-1;
-        int gruCounter=(int)gruLog.get(month);
-        return (int)gruCounter;
-    }
-    ArrayList getMonthLog(){//愚痴配列をリターンするメソッド
-        Gson gson=new Gson();
+        int gruCounter=0;
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
-
-        ArrayList gruLog = gson.fromJson(sharedPreferences.getString("GrumbleData", null), new TypeToken<ArrayList<Integer>>(){}.getType());
-        return gruLog;
+        if(month==1)gruCounter=sharedPreferences.getInt("1", 0);
+        if(month==2)gruCounter=sharedPreferences.getInt("2", 0);
+        if(month==3)gruCounter=sharedPreferences.getInt("3", 0);;
+        if(month==4)gruCounter=sharedPreferences.getInt("4", 0);
+        if(month==5)gruCounter=sharedPreferences.getInt("5", 0);
+        if(month==6)gruCounter=sharedPreferences.getInt("6", 0);
+        if(month==7)gruCounter=sharedPreferences.getInt("7", 0);
+        if(month==8)gruCounter=sharedPreferences.getInt("8", 0);
+        if(month==9)gruCounter=sharedPreferences.getInt("9", 0);
+        if(month==10)gruCounter=sharedPreferences.getInt("10", 0);
+        if(month==11)gruCounter=sharedPreferences.getInt("11", 0);
+        if(month==12)gruCounter=sharedPreferences.getInt("12", 0);
+        return gruCounter;
     }
 
     //<未完成>愚痴カウンタに応じて背景画面の変更をします
@@ -246,24 +286,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
     void setBottle(){
-        Gson gson = new Gson();//ファイル(data)から各月のデータを取得してリストを作成する
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
-        SharedPreferences.Editor e = sharedPreferences.edit();
-        ArrayList gruLog = gson.fromJson(sharedPreferences.getString("GrumbleData", null), new TypeToken<ArrayList<Integer>>(){}.getType());
-
-        int jan=(int)gruLog.get(0);
-        int feb=(int)gruLog.get(1);
-        int mar=(int)gruLog.get(2);
-        int apr=(int)gruLog.get(3);
-        int may=(int)gruLog.get(4);
-        int jun=(int)gruLog.get(5);
-        int jul=(int)gruLog.get(6);
-        int aug=(int)gruLog.get(7);
-        int sep=(int)gruLog.get(8);
-        int oct=(int)gruLog.get(9);
-        int nov=(int)gruLog.get(10);
-        int dec=(int)gruLog.get(11);
-
+        int jan = sharedPreferences.getInt("1", 0);
+        int feb = sharedPreferences.getInt("2", 0);
+        int mar = sharedPreferences.getInt("3", 0);
+        int apr = sharedPreferences.getInt("4", 0);
+        int may = sharedPreferences.getInt("5", 0);
+        int jun = sharedPreferences.getInt("6", 0);
+        int jul = sharedPreferences.getInt("7", 0);
+        int aug = sharedPreferences.getInt("8", 0);
+        int sep = sharedPreferences.getInt("9", 0);
+        int oct = sharedPreferences.getInt("10", 0);
+        int nov = sharedPreferences.getInt("11", 0);
+        int dec = sharedPreferences.getInt("12", 0);
 
         if(jan>9){
             ImageView imageView = (ImageView)findViewById(R.id.imageView5);

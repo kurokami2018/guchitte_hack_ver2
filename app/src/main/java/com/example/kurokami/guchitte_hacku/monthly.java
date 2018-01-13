@@ -29,8 +29,11 @@ public class monthly extends AppCompatActivity{
         // int ypos=1000000;//初期値入れてくださいby今野
         // tiedBottle(month,ypos);
     }
-    void set() {//各月の愚痴カウンタから表示数の瓶を可視化したい
+    void set() {//各月の愚痴カウンタの数を呼び出し・表示数の瓶を可視化
+
                 MainActivity.getMonthLog(1);
+
+                //findViewById(R.id.).setVisibility(View.VISIBLE);　可視化で使う
 
     }
 

@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     void emptyMonthLog(){//ArrayListの中身だけ消去する
-        SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = this.getSharedPreferences("data", Context.MODE_PRIVATE);
         SharedPreferences.Editor e = sharedPreferences.edit();
         e.remove("1");
         e.remove("2");
@@ -166,13 +166,13 @@ public class MainActivity extends AppCompatActivity {
         return gruCounter;
     }
 
-    //<未完成>愚痴カウンタに応じて背景画面の変更をします
+    //愚痴カウンタに応じて背景画面の変更をします
     void backgroundChange(int month){
         int count=getCounter(month);
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.main);
         if(count==0)layout.setBackgroundResource(R.drawable.back_1_r);
-        if(count==2)layout.setBackgroundResource(R.drawable.back_2_r);
-        if(count==5)layout.setBackgroundResource(R.drawable.back_3_r);
+        if(count==3)layout.setBackgroundResource(R.drawable.back_2_r);
+        if(count==8)layout.setBackgroundResource(R.drawable.back_3_r);
     }
     //葉っぱのエフェクト効果設定
     void leaf(){

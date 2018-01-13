@@ -65,8 +65,8 @@
 
     <ImageView
         android:id="@+id/leaf_1"
-        android:layout_width="45dp"
-        android:layout_height="46dp"
+        android:layout_width="48dp"
+        android:layout_height="52dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.123"
@@ -78,8 +78,8 @@
 
     <ImageView
         android:id="@+id/leaf_2"
-        android:layout_width="30dp"
-        android:layout_height="34dp"
+        android:layout_width="41dp"
+        android:layout_height="43dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.672"
@@ -91,8 +91,8 @@
 
     <ImageView
         android:id="@+id/leaf_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="42dp"
+        android:layout_height="63dp"
         android:layout_marginTop="332dp"
         android:visibility="invisible"
         app:layout_constraintHorizontal_bias="0.759"
@@ -103,8 +103,8 @@
 
     <ImageView
         android:id="@+id/leaf_4"
-        android:layout_width="26dp"
-        android:layout_height="34dp"
+        android:layout_width="36dp"
+        android:layout_height="38dp"
         android:layout_marginTop="332dp"
         android:visibility="invisible"
         app:layout_constraintHorizontal_bias="0.818"
@@ -116,8 +116,8 @@
 
     <ImageView
         android:id="@+id/leaf_5"
-        android:layout_width="32dp"
-        android:layout_height="43dp"
+        android:layout_width="44dp"
+        android:layout_height="55dp"
         android:layout_marginTop="332dp"
         android:visibility="invisible"
         app:layout_constraintHorizontal_bias="0.857"
@@ -141,7 +141,7 @@
 
     <ImageView
         android:id="@+id/leaf_7"
-        android:layout_width="20dp"
+        android:layout_width="28dp"
         android:layout_height="41dp"
         android:layout_marginTop="332dp"
         android:visibility="invisible"
@@ -205,8 +205,8 @@
 
     <ImageView
         android:id="@+id/leaf_12"
-        android:layout_width="40dp"
-        android:layout_height="35dp"
+        android:layout_width="47dp"
+        android:layout_height="49dp"
         android:layout_marginTop="332dp"
         android:visibility="invisible"
         app:layout_constraintHorizontal_bias="0.252"
@@ -229,8 +229,8 @@
 
     <ImageView
         android:id="@+id/leaf_14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="36dp"
+        android:layout_height="61dp"
 
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"

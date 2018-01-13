@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         boolean before = AppLaunchChecker.hasStartedFromLauncher(this);
         if (before == false) {
             ImageView imageView = new ImageView(this);//表示する場所と思われるthisか？
-            imageView.setImageResource(res.drawable.scene_1);
+            imageView.setImageResource(R.drawable.exp);
             setContentView(imageView);
             //ファイル名わかったら書き換えること
 

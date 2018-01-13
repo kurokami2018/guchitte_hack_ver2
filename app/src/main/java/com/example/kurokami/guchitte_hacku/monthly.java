@@ -24,43 +24,15 @@ public class monthly extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly);
 
-        int month= MainActivity.monthGetter();
+        int month = MainActivity.monthGetter();
         // int ypos=1000000;//初期値入れてくださいby今野
-       // tiedBottle(month,ypos);
+        // tiedBottle(month,ypos);
     }
-    public void onResume() {
-        super.onResume();
-        setContentView(R.layout.activity_main);
-    }
-    void set() {//月ごと・愚痴カウンタ10回で瓶を1個可視化
-          int month = MainActivity.monthGetter();
-          if (month == 1) {
+    void set() {//各月の愚痴カウンタから表示数の瓶を可視化したい
 
-           } else if (month == 2) {
-
-           } else if (month == 3) {
-
-           } else if (month == 4) {
-
-           } else if (month == 5) {
-
-           } else if (month == 6) {
-
-           } else if (month == 7) {
-
-           } else if (month == 8) {
-
-           } else if (month == 9) {
-
-           } else if (month == 10) {
-
-           } else if (month == 11) {
-
-           } else if (month == 12) {
-
-           }
 
     }
+
 /*
     void tiedBottle(int month,int ypos){
         ArrayList thisMonth;

@@ -80,7 +80,10 @@ public class MainActivity extends AppCompatActivity {
                 leaf();
             }
         });
-        backgroundChange();
+
+        Calendar cal = Calendar.getInstance();
+        int month = cal.get(Calendar.MONTH)+1; //月を取得
+        backgroundChange(month);
     }
 
 
@@ -134,8 +137,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //<未完成>愚痴カウンタに応じて背景画面の変更をします
-    void backgroundChange(){
-        int count=getCounter();
+    void backgroundChange(int month){
+        int count=getCounter(month);
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.main);
         if(count==0){
             layout.setBackgroundResource(R.drawable.back_1_r);

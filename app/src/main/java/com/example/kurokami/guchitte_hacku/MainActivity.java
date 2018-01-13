@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList monthLog = gson.fromJson(sharedPreferences.getString(key, null), new TypeToken<ArrayList<Integer>>(){}.getType());
         return monthLog;
     }
-    int monthGetter(){
+    static int monthGetter(){
         Calendar cal = Calendar.getInstance();
         int month = monthCheck.getCalender(cal);
         return month;
@@ -334,5 +334,6 @@ public class MainActivity extends AppCompatActivity {
         delGrumble.delGrumble(img20);
 
     }
+    void
 }
 

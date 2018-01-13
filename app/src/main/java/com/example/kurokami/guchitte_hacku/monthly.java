@@ -24,11 +24,44 @@ public class monthly extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly);
 
-        int month=MainActivity.monthGetter();
-        int ypos=1000000;//初期値入れてくださいby今野
-        tiedBottle(month,ypos);
+        int month= MainActivity.monthGetter();
+        // int ypos=1000000;//初期値入れてくださいby今野
+       // tiedBottle(month,ypos);
     }
+    public void onResume() {
+        super.onResume();
+        setContentView(R.layout.activity_main);
+    }
+    void set() {//月ごと・愚痴カウンタ10回で瓶を1個可視化
+          int month = MainActivity.monthGetter();
+          if (month == 1) {
 
+           } else if (month == 2) {
+
+           } else if (month == 3) {
+
+           } else if (month == 4) {
+
+           } else if (month == 5) {
+
+           } else if (month == 6) {
+
+           } else if (month == 7) {
+
+           } else if (month == 8) {
+
+           } else if (month == 9) {
+
+           } else if (month == 10) {
+
+           } else if (month == 11) {
+
+           } else if (month == 12) {
+
+           }
+
+    }
+/*
     void tiedBottle(int month,int ypos){
         ArrayList thisMonth;
         int number,xpos;
@@ -91,7 +124,7 @@ public class monthly extends AppCompatActivity{
         }
         else return month;
     }
-    void drawMonthPic(int month){//未完成、追記お願いしますby今野
+    void drawMonthPic(int month){
         //今日が何月か所得してその月が一番上に来るようにするなら、何月って書いてある絵も動かさないといけないかと思ったので作りました
         if(month==1);//"1月"って書いてある絵を貼る
         if(month==2);
@@ -106,33 +139,6 @@ public class monthly extends AppCompatActivity{
         if(month==11);
         if(month==12);
     }
-    protected void onResume() {
-        super.onResume();
-        setContentView(R.layout.activity_main);
-
-        //月間ページに移動
-        ImageButton backButton = (ImageButton) findViewById(R.id.back);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Sub 画面を起動
-                Intent intent = new Intent();
-                intent.setClassName("com.example.kurokami.guchitte_hacku", "com.example.kurokami.guchitte_hacku.MainActivity");
-                startActivity(intent);
-            }
-        });
-
-        //呟きを入力・消えるview
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                EditText editText = (EditText) findViewById(R.id.editText);
-                TextView textView = (TextView) findViewById(R.id.textView);
-                AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
-                fadein_image.setDuration(1000);
-                inputMessage.inputMessage(editText,textView);
-            }
-        });
-    }
-
+    */
 }
 

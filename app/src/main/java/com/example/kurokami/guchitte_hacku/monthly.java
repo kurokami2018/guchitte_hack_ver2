@@ -1,7 +1,14 @@
 package com.example.kurokami.guchitte_hacku;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +23,10 @@ public class monthly extends AppCompatActivity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly);
+
         int month=MainActivity.monthGetter();
         int ypos=1000000;//初期値入れてくださいby今野
-        tiedBottle(month,ypos);
+        tiedBottle(month,ypos);*/
     }
 
     void tiedBottle(int month,int ypos){
@@ -37,7 +45,6 @@ public class monthly extends AppCompatActivity{
             ypos=ypos+1000000000;//縦にずらしていく数字を直してくださいby今野
         }
     }
-
 
     void setBottle(int colorNumber,int xpos,int ypos) {
         if(colorNumber==1){
@@ -98,6 +105,33 @@ public class monthly extends AppCompatActivity{
         if(month==10);
         if(month==11);
         if(month==12);
+    }
+    protected void onResume() {
+        super.onResume();
+        setContentView(R.layout.activity_main);
+
+        //月間ページに移動
+        ImageButton backButton = (ImageButton) findViewById(R.id.back);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Sub 画面を起動
+                Intent intent = new Intent();
+                intent.setClassName("com.example.kurokami.guchitte_hacku", "com.example.kurokami.guchitte_hacku.MainActivity");
+                startActivity(intent);
+            }
+        });
+
+        //呟きを入力・消えるview
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                EditText editText = (EditText) findViewById(R.id.editText);
+                TextView textView = (TextView) findViewById(R.id.textView);
+                AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
+                fadein_image.setDuration(1000);
+                inputMessage.inputMessage(editText,textView);
+            }
+        });
     }
 
 }

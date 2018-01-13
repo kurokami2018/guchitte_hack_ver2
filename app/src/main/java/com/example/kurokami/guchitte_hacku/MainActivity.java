@@ -41,19 +41,6 @@ public class MainActivity extends AppCompatActivity {
         e.putInt("new_month", month);//キーをnew_monthとしてmonthをプレファレンスに保存
         e.commit();//保存実行
 
-        int jan = sharedPreferences.getInt("1", 0);
-        int feb = sharedPreferences.getInt("2", 0);
-        int mar = sharedPreferences.getInt("3", 0);
-        int apr = sharedPreferences.getInt("4", 0);
-        int may = sharedPreferences.getInt("5", 0);
-        int jun = sharedPreferences.getInt("6", 0);
-        int jul = sharedPreferences.getInt("7", 0);
-        int aug = sharedPreferences.getInt("8", 0);
-        int sep = sharedPreferences.getInt("9", 0);
-        int oct = sharedPreferences.getInt("10", 0);
-        int nov = sharedPreferences.getInt("11", 0);
-        int dec = sharedPreferences.getInt("12", 0);
-
     }
     //onResume
     protected void onResume() {
@@ -287,6 +274,23 @@ public class MainActivity extends AppCompatActivity {
         delGrumble.delGrumble(img20);
 
     }
+    void makeArray(){
+        SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
+        int jan = sharedPreferences.getInt("1", 0);
+        int feb = sharedPreferences.getInt("2", 0);
+        int mar = sharedPreferences.getInt("3", 0);
+        int apr = sharedPreferences.getInt("4", 0);
+        int may = sharedPreferences.getInt("5", 0);
+        int jun = sharedPreferences.getInt("6", 0);
+        int jul = sharedPreferences.getInt("7", 0);
+        int aug = sharedPreferences.getInt("8", 0);
+        int sep = sharedPreferences.getInt("9", 0);
+        int oct = sharedPreferences.getInt("10", 0);
+        int nov = sharedPreferences.getInt("11", 0);
+        int dec = sharedPreferences.getInt("12", 0);
+        int[] data = new int[]{jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec};
+    }
+
     void setBottle(){
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
         int jan = sharedPreferences.getInt("1", 0);

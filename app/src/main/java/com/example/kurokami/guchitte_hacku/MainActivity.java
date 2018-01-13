@@ -4,6 +4,7 @@
         import android.content.Intent;
         import android.content.SharedPreferences;
         import android.os.Bundle;
+        import android.support.constraint.ConstraintLayout;
         import android.support.v7.app.AppCompatActivity;
         import android.view.View;
         import android.view.animation.AlphaAnimation;
@@ -105,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 inputMessage.inputMessage(editText,textView);
             }
         });
+        backgroundChange();
     }
 
     void data(int month,int gruCounter){
@@ -218,9 +220,17 @@ public class MainActivity extends AppCompatActivity {
         int month = monthCheck.getCalender(cal);
         return month;
     }
+    //愚痴カウンタに応じて背景画面の変更をします
     void backgroundChange(){
-
-
+        int count=getCounter();
+        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.main);
+        if(count==0){
+            layout.setBackgroundResource(R.drawable.back_1_r);
+        }else if(count==2){
+            layout.setBackgroundResource(R.drawable.back_2_r);
+        } else if(count==5){
+            layout.setBackgroundResource(R.drawable.back_3_r);
+        }
     }
 }
 

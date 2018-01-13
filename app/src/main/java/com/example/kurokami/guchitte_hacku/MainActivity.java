@@ -8,14 +8,10 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.util.ArrayList;
 import java.util.Calendar;
 import android.support.v4.app.AppLaunchChecker;
 
@@ -64,16 +60,6 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         setContentView(R.layout.activity_main);
 
-        //月間ページに移動
-        ImageButton monthButton = (ImageButton) findViewById(R.id.b_mon);
-        monthButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Sub 画面を起動
-                Intent intent = new Intent();
-                intent.setClassName("com.example.kurokami.guchitte_hacku", "com.example.kurokami.guchitte_hacku.monthly");
-                startActivity(intent);
-            }
-        });
 
         //呟きを入力・消えるview
         ImageButton button = (ImageButton) findViewById(R.id.button);
@@ -85,8 +71,25 @@ public class MainActivity extends AppCompatActivity {
                 fadein_image.setDuration(1000);
                 inputMessage.inputMessage(editText,textView);
                 leaf();
+                Calendar cal = Calendar.getInstance();
+                int month = cal.get(Calendar.MONTH)+1; //月を取得
+                addGruCounter(month);
+                backgroundChange(month);
             }
         });
+
+        //月間ページに移動
+        ImageButton monthButton = (ImageButton) findViewById(R.id.b_mon);
+        monthButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Sub 画面を起動
+                Intent intent = new Intent();
+                intent.setClassName("com.example.kurokami.guchitte_hacku", "com.example.kurokami.guchitte_hacku.monthly");
+                startActivity(intent);
+                setBottle();
+            }
+        });
+
 
         Calendar cal = Calendar.getInstance();
         int month = cal.get(Calendar.MONTH)+1; //月を取得
@@ -127,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         int month = cal.get(Calendar.MONTH)+1; //月を取得
         return month;
     }
-    void addgruCounter(int month){//gruCounterに++するメソッド引数なし、リターンもなし
+    void addGruCounter(int month){//gruCounterに++するメソッド引数なし、リターンもなし
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
         SharedPreferences.Editor e = sharedPreferences.edit();
         int gruCounter = 0;
@@ -144,19 +147,18 @@ public class MainActivity extends AppCompatActivity {
         if(month==11)gruCounter=sharedPreferences.getInt("11", 0);
         if(month==12)gruCounter=sharedPreferences.getInt("12", 0);
         gruCounter++;
-        if(month==1)e.putInt("1",gruCounter);
-        if(month==2)e.putInt("2",gruCounter);
-        if(month==3)e.putInt("3",gruCounter);
-        if(month==4)e.putInt("4",gruCounter);
-        if(month==5)e.putInt("5",gruCounter);
-        if(month==6)e.putInt("6",gruCounter);
-        if(month==7)e.putInt("7",gruCounter);
-        if(month==8)e.putInt("8",gruCounter);
-        if(month==9)e.putInt("9",gruCounter);
-        if(month==10)e.putInt("10",gruCounter);
-        if(month==11)e.putInt("11",gruCounter);
-        if(month==12)e.putInt("12",gruCounter);
-        e.commit();
+        if(month==1){e.putInt("1",gruCounter);e.commit();}
+        if(month==2){e.putInt("2",gruCounter);e.commit();}
+        if(month==3){e.putInt("3",gruCounter);e.commit();}
+        if(month==4){e.putInt("4",gruCounter);e.commit();}
+        if(month==5){e.putInt("5",gruCounter);e.commit();}
+        if(month==6){e.putInt("6",gruCounter);e.commit();}
+        if(month==7){e.putInt("7",gruCounter);e.commit();}
+        if(month==8){e.putInt("8",gruCounter);e.commit();}
+        if(month==9){e.putInt("9",gruCounter);e.commit();}
+        if(month==10){e.putInt("10",gruCounter);e.commit();}
+        if(month==11){e.putInt("11",gruCounter);e.commit();}
+        if(month==12){e.putInt("12",gruCounter);e.commit();}
     }
     int getCounter(int month){//gruCounterを獲得するメソッド
         int gruCounter=0;

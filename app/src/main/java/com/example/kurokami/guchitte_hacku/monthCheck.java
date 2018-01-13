@@ -29,7 +29,7 @@ public class monthCheck extends AppCompatActivity {
 
   }
   
-  
+
   public static void getPast(int pastMonth,int month){
     
 //仮に最終ログイン月をpastMonthとする
@@ -43,9 +43,9 @@ public class monthCheck extends AppCompatActivity {
         MainActivity.emptyGruCounter();//愚痴回数カウンタを0にするメソッド
       }
     }
-    
+  /*
     if(pastMonth==month){mainDisplay();}//コンストラクタだからこれで呼び出される...？
-    
+   */
   }
 
 }

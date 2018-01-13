@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
         e.putInt("grumbleCounter",gruCounter);
         e.commit();
     }
-    static int getCounter(){//gruCounterを獲得するメソッド
+    int getCounter(){//gruCounterを獲得するメソッド
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
         SharedPreferences.Editor e = sharedPreferences.edit();
         int gruCounter=sharedPreferences.getInt("grumbleCounter",0);
@@ -334,9 +334,6 @@ public class MainActivity extends AppCompatActivity {
         delGrumble.delGrumble(img20);
 
     }
-    void in(){
 
-
-    }
 }
 

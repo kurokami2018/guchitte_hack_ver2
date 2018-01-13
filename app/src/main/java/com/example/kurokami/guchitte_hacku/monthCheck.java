@@ -31,7 +31,7 @@ public class monthCheck extends AppCompatActivity {
   public void getPast(int pastMonth,int month){
     
 //仮に最終ログイン月をpastMonthとする
-    
+
     if(pastMonth!=month){
       if((month==1) || (pastMonth==0)){//&&ではなく||じゃないかな　by今野 ほんとだ！ありがとう！by小松
         MainActivity.emptyMonthLog();//月間初期画面を表示する

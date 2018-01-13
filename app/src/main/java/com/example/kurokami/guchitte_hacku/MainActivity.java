@@ -38,11 +38,30 @@ public class MainActivity extends AppCompatActivity {
         int lastMonth = sharedPreferences.getInt("lastMonth_data", 0);//前回のログインした月をしまっておく
         if(lastMonth!=month){
             if((month==1) || (lastMonth==0)){//&&ではなく||じゃないかな　by今野 ほんとだ！ありがとう！by小松
-                MainActivity.emptyMonthLog();//月間初期画面を表示する
-                MainActivity.emptyGruCounter();//愚痴回数カウンターを0にするメソッド
+                SharedPreferences.Editor e = sharedPreferences.edit();//emptyMonthLogを直書き
+                e.remove("jan_data");
+                e.remove("feb_data");
+                e.remove("mar_data");
+                e.remove("apr_data");
+                e.remove("may_data");
+                e.remove("jun_data");
+                e.remove("jul_data");
+                e.remove("aug_data");
+                e.remove("sep_data");
+                e.remove("oct_data");
+                e.remove("nov_data");
+                e.remove("dec_data");
+                e.commit();//月間初期画面を表示する
+
+                int gruCounter=0;
+                e.putInt("grumbleCounter",gruCounter);
+                e.commit();//愚痴回数カウンターを0にするメソッド
             }
             else{
-                MainActivity.emptyGruCounter();//愚痴回数カウンタを0にするメソッド
+                int gruCounter=0;
+                SharedPreferences.Editor e = sharedPreferences.edit();
+                e.putInt("grumbleCounter",gruCounter);
+                e.commit();//愚痴回数カウンタを0にするメソッド
             }
         }
         SharedPreferences.Editor e = sharedPreferences.edit();
@@ -167,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
     }
     void emptyMonthLog(){//ArrayListの中身だけ消去する
         Gson gson=new Gson();
+
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
         SharedPreferences.Editor e = sharedPreferences.edit();
         e.remove("jan_data");
@@ -236,8 +256,9 @@ public class MainActivity extends AppCompatActivity {
             layout.setBackgroundResource(R.drawable.back_1_r);
         }else if(count==2){
             layout.setBackgroundResource(R.drawable.back_2_r);
-        } else if(count==5){
+        } else if(count==5) {
             layout.setBackgroundResource(R.drawable.back_3_r);
+        }
     }
     //葉っぱのエフェクト効果設定
     void leaf(){

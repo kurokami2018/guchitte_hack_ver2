@@ -4,6 +4,7 @@
         import android.content.Intent;
         import android.content.SharedPreferences;
         import android.os.Bundle;
+        import android.support.constraint.ConstraintLayout;
         import android.support.v7.app.AppCompatActivity;
         import android.view.View;
         import android.view.animation.AlphaAnimation;
@@ -38,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         e.commit();//保存実行
         int gruCounter = sharedPreferences.getInt("grumbleCounter", 0);//保存されていたgruCounterを取得
 
-//ここのりさちゃんの修正箇所(見やすくしてくれたのかな？)を私も直してて致命的だったので私のを採用しました、ごめんね
         Gson gson = new Gson();//ファイル(data)から各月のデータを取得してリストを作成する
         ArrayList<Integer> jan = new ArrayList<Integer>();//1月のデータを格納するArrayListのjanを生成
         jan = gson.fromJson(sharedPreferences.getString("jan_data", null), new TypeToken<ArrayList<Integer>>(){}.getType());
@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 inputMessage.inputMessage(editText,textView);
             }
         });
+        backgroundChange();
     }
 
     void data(int month,int gruCounter){
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             else if(month==9)key="sep_data";
             else if(month==10)key="oct_data";
             else if(month==11)key="nov_data";
-            else if(month==12)key="dec_data";//ここのエラー解消できませんby今野 ifと1行下の1文加えてみましたby菅井 ありがとう！by今野
+            else if(month==12)key="dec_data";
             else key=null;
 
             Gson gson=new Gson();
@@ -218,6 +219,18 @@ public class MainActivity extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
         int month = monthCheck.getCalender(cal);
         return month;
+    }
+    //愚痴カウンタに応じて背景画面の変更をします
+    void backgroundChange(){
+        int count=getCounter();
+        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.main);
+        if(count==0){
+            layout.setBackgroundResource(R.drawable.back_1_r);
+        }else if(count==2){
+            layout.setBackgroundResource(R.drawable.back_2_r);
+        } else if(count==5){
+            layout.setBackgroundResource(R.drawable.back_3_r);
+        }
     }
 }
 

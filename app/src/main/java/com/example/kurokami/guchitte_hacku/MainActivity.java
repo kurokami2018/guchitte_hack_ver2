@@ -216,11 +216,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList monthLog = gson.fromJson(sharedPreferences.getString(key, null), new TypeToken<ArrayList<Integer>>(){}.getType());
         return monthLog;
     }
-    static int monthGetter(){
-        Calendar cal = Calendar.getInstance();
-        int month = monthCheck.getCalender(cal);
-        return month;
-    }
+
     //<未完成>愚痴カウンタに応じて背景画面の変更をします
     void backgroundChange(){
         int count=getCounter();

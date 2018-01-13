@@ -25,15 +25,67 @@ public class monthly extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly);
 
-        int month = MainActivity.monthGetter();
+        MainActivity mainActivity = new MainActivity();
+        settingBottle(mainActivity.getMonthLog(1));
+        settingBottle(mainActivity.getMonthLog(2));
+        settingBottle(mainActivity.getMonthLog(3));
+        settingBottle(mainActivity.getMonthLog(4));
+        settingBottle(mainActivity.getMonthLog(5));
+        settingBottle(mainActivity.getMonthLog(6));
+        settingBottle(mainActivity.getMonthLog(7));
+        settingBottle(mainActivity.getMonthLog(8));
+        settingBottle(mainActivity.getMonthLog(9));
+        settingBottle(mainActivity.getMonthLog(10));
+        settingBottle(mainActivity.getMonthLog(11));
+        settingBottle(mainActivity.getMonthLog(12));
+
+
         // int ypos=1000000;//初期値入れてくださいby今野
         // tiedBottle(month,ypos);
     }
-    void set() {//各月の愚痴カウンタの数を呼び出し・表示数の瓶を可視化
+    void settingBottle(ArrayList arrayList){ //各月の愚痴カウンタの数を呼び出し・表示数の瓶を可視化
+            Object obj = arrayList.get(1);
+            String objStr = obj.toString();
 
-        //int viewId = getResources().getIdentifier("idの名前を入れる", "id", getPackageName());
-        //ImageView imageView = (ImageView)findViewById(viewId);
-        //imageView.setVisibility(View.VISIBLE);　可視化
+        int jan = new Integer(objStr).intValue();
+        int feb = new Integer(objStr).intValue();
+        int mar = new Integer(objStr).intValue();
+        int apr = new Integer(objStr).intValue();
+        int may = new Integer(objStr).intValue();
+        int jun = new Integer(objStr).intValue();
+        int jul = new Integer(objStr).intValue();
+        int aug = new Integer(objStr).intValue();
+        int sep = new Integer(objStr).intValue();
+        int oct = new Integer(objStr).intValue();
+        int nov = new Integer(objStr).intValue();
+        int dec = new Integer(objStr).intValue();
+
+
+
+            if(jan>9){
+                ImageView imageView = (ImageView)findViewById(R.id.imageView5);
+                imageView.setVisibility(View.VISIBLE);
+            }
+            if(jan>19){
+                ImageView imageView2 = (ImageView)findViewById(R.id.imageView6);
+                imageView2.setVisibility(View.VISIBLE);
+            }
+            if(jan>29){
+                ImageView imageView3 = (ImageView)findViewById(R.id.imageView7);
+                imageView3.setVisibility(View.VISIBLE);
+            }
+            if(jan>39){
+                ImageView imageView4 = (ImageView)findViewById(R.id.imageView8);
+                imageView4.setVisibility(View.VISIBLE);
+            }
+            if(jan>49){
+                ImageView imageView5 = (ImageView)findViewById(R.id.imageView9);
+                imageView5.setVisibility(View.VISIBLE);
+            }
+            if(jan>59){
+                ImageView imageView6 = (ImageView)findViewById(R.id.imageView10);
+                imageView6.setVisibility(View.VISIBLE);
+            }
 
     }
 

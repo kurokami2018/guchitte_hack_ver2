@@ -8,8 +8,8 @@
 
     <ImageButton
         android:id="@+id/b_mon"
-        android:layout_width="118dp"
-        android:layout_height="122dp"
+        android:layout_width="111dp"
+        android:layout_height="117dp"
         android:background="#00000000"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"

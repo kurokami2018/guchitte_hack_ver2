@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setClassName("com.example.kurokami.guchitte_hacku", "com.example.kurokami.guchitte_hacku.monthly");
                 int[] data = makeArray();
-                intent.putExtra("int[]",data);
+                intent.putExtra("data",data);
                 startActivity(intent);
             }
         });

@@ -26,7 +26,7 @@ public class monthly extends AppCompatActivity{
 
         int month=MainActivity.monthGetter();
         int ypos=1000000;//初期値入れてくださいby今野
-        tiedBottle(month,ypos);*/
+        tiedBottle(month,ypos);
     }
 
     void tiedBottle(int month,int ypos){

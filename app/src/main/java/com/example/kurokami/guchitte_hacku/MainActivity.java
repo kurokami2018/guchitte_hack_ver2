@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
                 fadein_image.setDuration(1000);
                 inputMessage.inputMessage(editText,textView);
+                leaf();
             }
         });
         backgroundChange();
@@ -231,6 +232,107 @@ public class MainActivity extends AppCompatActivity {
         } else if(count==5){
             layout.setBackgroundResource(R.drawable.back_3_r);
         }
+    }
+    //葉っぱのエフェクト効果設定
+    void leaf(){
+        AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
+        fadein_image.setDuration(1000);
+
+        ImageView img2 = (ImageView) findViewById(R.id.leaf_2);
+        img2.setImageResource(R.drawable.leaf_2);
+        img2.startAnimation(fadein_image);
+        delGrumble.delGrumble(img2);
+
+        ImageView img3 = (ImageView) findViewById(R.id.leaf_3);
+        img3.setImageResource(R.drawable.leaf_3);
+        img3.startAnimation(fadein_image);
+        delGrumble.delGrumble(img3);
+
+        ImageView img4 = (ImageView) findViewById(R.id.leaf_4);
+        img4.setImageResource(R.drawable.leaf_4);
+        img4.startAnimation(fadein_image);
+        delGrumble.delGrumble(img4);
+
+        ImageView img5 = (ImageView) findViewById(R.id.leaf_5);
+        img5.setImageResource(R.drawable.leaf_5);
+        img5.startAnimation(fadein_image);
+        delGrumble.delGrumble(img5);
+
+        ImageView img6 = (ImageView) findViewById(R.id.leaf_6);
+        img6.setImageResource(R.drawable.leaf_6);
+        img6.startAnimation(fadein_image);
+        delGrumble.delGrumble(img6);
+
+        ImageView img7 = (ImageView) findViewById(R.id.leaf_7);
+        img7.setImageResource(R.drawable.leaf_7);
+        img7.startAnimation(fadein_image);
+        delGrumble.delGrumble(img7);
+
+        ImageView img8 = (ImageView) findViewById(R.id.leaf_8);
+        img8.setImageResource(R.drawable.leaf_8);
+        img8.startAnimation(fadein_image);
+        delGrumble.delGrumble(img8);
+
+        ImageView img9 = (ImageView) findViewById(R.id.leaf_9);
+        img9.setImageResource(R.drawable.leaf_9);
+        img9.startAnimation(fadein_image);
+        delGrumble.delGrumble(img9);
+
+        ImageView img10 = (ImageView) findViewById(R.id.leaf_10);
+        img10.setImageResource(R.drawable.leaf_10);
+        img10.startAnimation(fadein_image);
+        delGrumble.delGrumble(img10);
+
+        ImageView img11 = (ImageView) findViewById(R.id.leaf_11);
+        img11.setImageResource(R.drawable.leaf_11);
+        img11.startAnimation(fadein_image);
+        delGrumble.delGrumble(img11);
+
+        ImageView img12 = (ImageView) findViewById(R.id.leaf_12);
+        img12.setImageResource(R.drawable.leaf_12);
+        img12.startAnimation(fadein_image);
+        delGrumble.delGrumble(img12);
+
+        ImageView img13 = (ImageView) findViewById(R.id.leaf_13);
+        img13.setImageResource(R.drawable.leaf_13);
+        img13.startAnimation(fadein_image);
+        delGrumble.delGrumble(img13);
+
+        ImageView img14 = (ImageView) findViewById(R.id.leaf_14);
+        img14.setImageResource(R.drawable.leaf_14);
+        img14.startAnimation(fadein_image);
+        delGrumble.delGrumble(img14);
+
+        ImageView img15 = (ImageView) findViewById(R.id.leaf_15);
+        img15.setImageResource(R.drawable.leaf_15);
+        img15.startAnimation(fadein_image);
+        delGrumble.delGrumble(img15);
+
+        ImageView img16 = (ImageView) findViewById(R.id.leaf_16);
+        img16.setImageResource(R.drawable.leaf_16);
+        img16.startAnimation(fadein_image);
+        delGrumble.delGrumble(img16);
+
+        ImageView img17 = (ImageView) findViewById(R.id.leaf_17);
+        img17.setImageResource(R.drawable.leaf_17);
+        img17.startAnimation(fadein_image);
+        delGrumble.delGrumble(img17);
+
+        ImageView img18 = (ImageView) findViewById(R.id.leaf_18);
+        img18.setImageResource(R.drawable.leaf_18);
+        img18.startAnimation(fadein_image);
+        delGrumble.delGrumble(img18);
+
+        ImageView img19 = (ImageView) findViewById(R.id.leaf_19);
+        img19.setImageResource(R.drawable.leaf_19);
+        img19.startAnimation(fadein_image);
+        delGrumble.delGrumble(img19);
+
+        ImageView img20 = (ImageView) findViewById(R.id.leaf_20);
+        img20.setImageResource(R.drawable.leaf_20);
+        img20.startAnimation(fadein_image);
+        delGrumble.delGrumble(img20);
+
     }
 }
 

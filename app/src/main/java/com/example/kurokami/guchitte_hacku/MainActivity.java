@@ -291,6 +291,7 @@ public class MainActivity extends AppCompatActivity {
         int[] data = new int[]{jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec};
     }
 
+
     void setBottle(){
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
         int jan = sharedPreferences.getInt("1", 0);

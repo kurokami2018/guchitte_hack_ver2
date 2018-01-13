@@ -11,13 +11,25 @@
         android:layout_height="match_parent">
 
 
-        <ImageView
-            android:id="@+id/imageView4"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitStart"
-            android:visibility="visible"
-            app:srcCompat="@drawable/month_b" />
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="matrix"
+                app:srcCompat="@drawable/b_re" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/month_b" />
+        </LinearLayout>
 
     </ScrollView>
 

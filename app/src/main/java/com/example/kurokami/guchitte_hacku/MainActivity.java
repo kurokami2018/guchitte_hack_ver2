@@ -31,7 +31,10 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
         //Calenderを取得、MainActivityでしか取得できないから動かさない
-        int month = monthGetter();//今回ログイン月を取得
+
+        Calendar cal = Calendar.getInstance();
+        int month = monthCheck.getCalender(cal);//今回ログイン月を取得
+
         int lastMonth = sharedPreferences.getInt("lastMonth_data", 0);//前回のログインした月をしまっておく
         monthCheck.getPast(lastMonth, month);//前回のログイン月と今回のログイン月を比較するメソッドに前回ログイン月を渡す
         SharedPreferences.Editor e = sharedPreferences.edit();

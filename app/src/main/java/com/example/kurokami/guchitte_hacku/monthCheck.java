@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class monthCheck extends AppCompatActivity {
 
-  public static int getCalender(Calendar cal) {
+  public int getCalender(Calendar cal) {
 
     int year = cal.get(Calendar.YEAR); //年を取得
     int month = cal.get(Calendar.MONTH)+1; //月を取得
@@ -28,7 +28,7 @@ public class monthCheck extends AppCompatActivity {
   }
   
 
-  public static void getPast(int pastMonth,int month){
+  public void getPast(int pastMonth,int month){
     
 //仮に最終ログイン月をpastMonthとする
     

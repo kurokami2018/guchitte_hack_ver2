@@ -33,10 +33,18 @@ public class MainActivity extends AppCompatActivity {
         //Calenderを取得、MainActivityでしか取得できないから動かさない
 
         Calendar cal = Calendar.getInstance();
-        int month = monthCheck.getCalender(cal);//今回ログイン月を取得
+        int month = cal.get(Calendar.MONTH)+1; //月を取得
 
         int lastMonth = sharedPreferences.getInt("lastMonth_data", 0);//前回のログインした月をしまっておく
-        monthCheck.getPast(lastMonth, month);//前回のログイン月と今回のログイン月を比較するメソッドに前回ログイン月を渡す
+        if(lastMonth!=month){
+            if((month==1) || (lastMonth==0)){//&&ではなく||じゃないかな　by今野 ほんとだ！ありがとう！by小松
+                MainActivity.emptyMonthLog();//月間初期画面を表示する
+                MainActivity.emptyGruCounter();//愚痴回数カウンターを0にするメソッド
+            }
+            else{
+                MainActivity.emptyGruCounter();//愚痴回数カウンタを0にするメソッド
+            }
+        }
         SharedPreferences.Editor e = sharedPreferences.edit();
         e.putInt("new_month", month);//キーをnew_monthとしてmonthをプレファレンスに保存
         e.commit();//保存実行
@@ -230,7 +238,6 @@ public class MainActivity extends AppCompatActivity {
             layout.setBackgroundResource(R.drawable.back_2_r);
         } else if(count==5){
             layout.setBackgroundResource(R.drawable.back_3_r);
-        }
     }
     //葉っぱのエフェクト効果設定
     void leaf(){

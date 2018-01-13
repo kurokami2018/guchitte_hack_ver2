@@ -56,7 +56,7 @@ public class monthCheck extends AppCompatActivity {
       }
     }
     
-    if(pastMonth==month){/*呟く画面を表示*/}
+    if(pastMonth==month){mainDisplay();}//コンストラクタだからこれで呼び出される...？
     
   }
 

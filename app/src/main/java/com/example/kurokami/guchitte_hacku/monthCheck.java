@@ -23,7 +23,7 @@ public class monthCheck extends AppCompatActivity {
     int year = cal.get(Calendar.YEAR); //年を取得
     int month = cal.get(Calendar.MONTH)+1; //月を取得
     int day = cal.get(Calendar.DATE);//日を取得
-    //return文どうすればいい？
+
     return month;
 
 

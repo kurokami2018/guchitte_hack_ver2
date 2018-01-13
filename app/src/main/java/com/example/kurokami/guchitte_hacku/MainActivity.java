@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
                 // Sub 画面を起動
                 Intent intent = new Intent();
                 intent.setClassName("com.example.kurokami.guchitte_hacku", "com.example.kurokami.guchitte_hacku.monthly");
+                int[] data = makeArray();
+                intent.putExtra("int[]",data);
                 startActivity(intent);
                 setBottle();
             }
@@ -274,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
         delGrumble.delGrumble(img20);
 
     }
-    void makeArray(){
+    int[] makeArray(){
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
         int jan = sharedPreferences.getInt("1", 0);
         int feb = sharedPreferences.getInt("2", 0);
@@ -288,7 +290,8 @@ public class MainActivity extends AppCompatActivity {
         int oct = sharedPreferences.getInt("10", 0);
         int nov = sharedPreferences.getInt("11", 0);
         int dec = sharedPreferences.getInt("12", 0);
-        int[] data = new int[]{jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec};
+       int[] data = new int[]{jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec};
+        return data;
     }
 
 

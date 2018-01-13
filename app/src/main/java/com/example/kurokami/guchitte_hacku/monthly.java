@@ -25,6 +25,9 @@ public class monthly extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_monthly);
 
+        Intent intent = getIntent();
+        int[] data = intent.getIntArrayExtra( "data" );
+
         // int ypos=1000000;//初期値入れてくださいby今野
         // tiedBottle(month,ypos);
     }

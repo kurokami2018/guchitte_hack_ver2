@@ -31,7 +31,6 @@ public class monthly extends AppCompatActivity{
     }
     void set() {//各月の愚痴カウンタの数を呼び出し・表示数の瓶を可視化
 
-                MainActivity.getMonthLog(1);
 
                 //findViewById(R.id.).setVisibility(View.VISIBLE);　可視化で使う
 

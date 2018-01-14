@@ -8,8 +8,7 @@
     android:layout_height="match_parent"
 
     tools:context="com.example.kurokami.guchitte_hacku.MainActivity">
-
-
+    
     <ImageButton
         android:id="@+id/b_mon"
         android:layout_width="111dp"
@@ -313,5 +312,10 @@
         app:layout_constraintVertical_bias="0.727"
         app:srcCompat="@drawable/leaf_20" />
 
+
+    <ImageView
+        android:id="@+id/gifView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.example.kurokami.guchitte_hacku;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.Calendar;
 import android.support.v4.app.AppLaunchChecker;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,13 +36,14 @@ public class MainActivity extends AppCompatActivity {
         int month = cal.get(Calendar.MONTH)+1; //月を取得
 
         int lastMonth = sharedPreferences.getInt("lastMonth_data", 0);//前回のログインした月をしまっておく
+        SharedPreferences.Editor editer = sharedPreferences.edit();
 
-        if((lastMonth!=month)&&((month==1) || (lastMonth==0))) {//&&ではなく||じゃないかな　by今野 ほんとだ！ありがとう！by小松
+        if((lastMonth!=month)&&((month==1) || (lastMonth==0))) {
             emptyMonthLog();
         }
 
         SharedPreferences.Editor e = sharedPreferences.edit();
-        e.putInt("new_month", month);//キーをnew_monthとしてmonthをプレファレンスに保存
+        e.putInt("lastMonth_data", month);//キーをnew_monthとしてmonthをプレファレンスに保存
         e.commit();//保存実行
 
     }
@@ -47,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         setContentView(R.layout.activity_main);
 
+
+        Calendar cal = Calendar.getInstance();
+        int month = cal.get(Calendar.MONTH)+1; //月を取得
 
         //呟きを入力・消えるview
         ImageButton button = (ImageButton) findViewById(R.id.button);
@@ -78,9 +86,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        Calendar cal = Calendar.getInstance();
-        int month = cal.get(Calendar.MONTH)+1; //月を取得
         backgroundChange(month);
     }
 
@@ -170,9 +175,9 @@ public class MainActivity extends AppCompatActivity {
     void backgroundChange(int month){
         int count=getCounter(month);
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.main);
-        if(count==0)layout.setBackgroundResource(R.drawable.back_1_r);
-        if(count==3)layout.setBackgroundResource(R.drawable.back_2_r);
-        if(count==8)layout.setBackgroundResource(R.drawable.back_3_r);
+        if(count<10)layout.setBackgroundResource(R.drawable.back_1_r);
+        if(count>=10 && count<=20)layout.setBackgroundResource(R.drawable.back_2_r);
+        if(count>20)layout.setBackgroundResource(R.drawable.back_3_r);
     }
     //葉っぱのエフェクト効果設定
     void leaf(){

@@ -1,9 +1,8 @@
 
-package com.example.kurokami.guchitte_hacku;
+package com.example.kurokami.guchitte_hacku_ver2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -16,16 +15,13 @@ import android.widget.TextView;
 import java.util.Calendar;
 import android.support.v4.app.AppLaunchChecker;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
-
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_main);
 
         forBeginner();//アプリを初回起動の時だけ出てくる説明画像を表示する
 
@@ -50,18 +46,18 @@ public class MainActivity extends AppCompatActivity {
     //onResume
     protected void onResume() {
         super.onResume();
-        setContentView(R.layout.activity_main);
+        setContentView(com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_main);
 
 
         Calendar cal = Calendar.getInstance();
         int month = cal.get(Calendar.MONTH)+1; //月を取得
 
         //呟きを入力・消えるview
-        ImageButton button = (ImageButton) findViewById(R.id.button);
+        ImageButton button = (ImageButton) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EditText editText = (EditText) findViewById(R.id.editText);
-                TextView textView = (TextView) findViewById(R.id.textView);
+                EditText editText = (EditText) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.editText);
+                TextView textView = (TextView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.textView);
                 AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
                 fadein_image.setDuration(1000);
                 inputMessage.inputMessage(editText,textView);
@@ -74,12 +70,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //月間ページに移動
-        ImageButton monthButton = (ImageButton) findViewById(R.id.b_mon);
+        ImageButton monthButton = (ImageButton) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.b_mon);
         monthButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Sub 画面を起動
                 Intent intent = new Intent();
-                intent.setClassName("com.example.kurokami.guchitte_hacku", "com.example.kurokami.guchitte_hacku.monthly");
+                intent.setClassName("com.example.kurokami.guchitte_hacku", "monthly");
                 int[] data = makeArray();
                 intent.putExtra("data",data);
                 startActivity(intent);
@@ -94,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         boolean before = AppLaunchChecker.hasStartedFromLauncher(this);
         if (before == false) {
             ImageView imageView = new ImageView(this);//表示する場所と思われるthisか？
-            imageView.setImageResource(R.drawable.exp);
+            imageView.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.exp);
             setContentView(imageView);
             //ファイル名わかったら書き換えること
 
@@ -174,108 +170,108 @@ public class MainActivity extends AppCompatActivity {
     //愚痴カウンタに応じて背景画面の変更をします
     void backgroundChange(int month){
         int count=getCounter(month);
-        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.main);
-        if(count<10)layout.setBackgroundResource(R.drawable.back_1_r);
-        if(count>=10 && count<=20)layout.setBackgroundResource(R.drawable.back_2_r);
-        if(count>20)layout.setBackgroundResource(R.drawable.back_3_r);
+        ConstraintLayout layout = (ConstraintLayout) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.main);
+        if(count<10)layout.setBackgroundResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.back_1_r);
+        if(count>=10 && count<=20)layout.setBackgroundResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.back_2_r);
+        if(count>20)layout.setBackgroundResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.back_3_r);
     }
     //葉っぱのエフェクト効果設定
     void leaf(){
         AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
         fadein_image.setDuration(1000);
 
-        ImageView img2 = (ImageView) findViewById(R.id.leaf_2);
-        img2.setImageResource(R.drawable.leaf_2);
+        ImageView img2 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_2);
+        img2.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_2);
         img2.startAnimation(fadein_image);
         delGrumble.delGrumble(img2);
 
-        ImageView img3 = (ImageView) findViewById(R.id.leaf_3);
-        img3.setImageResource(R.drawable.leaf_3);
+        ImageView img3 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_3);
+        img3.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_3);
         img3.startAnimation(fadein_image);
         delGrumble.delGrumble(img3);
 
-        ImageView img4 = (ImageView) findViewById(R.id.leaf_4);
-        img4.setImageResource(R.drawable.leaf_4);
+        ImageView img4 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_4);
+        img4.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_4);
         img4.startAnimation(fadein_image);
         delGrumble.delGrumble(img4);
 
-        ImageView img5 = (ImageView) findViewById(R.id.leaf_5);
-        img5.setImageResource(R.drawable.leaf_5);
+        ImageView img5 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_5);
+        img5.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_5);
         img5.startAnimation(fadein_image);
         delGrumble.delGrumble(img5);
 
-        ImageView img6 = (ImageView) findViewById(R.id.leaf_6);
-        img6.setImageResource(R.drawable.leaf_6);
+        ImageView img6 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_6);
+        img6.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_6);
         img6.startAnimation(fadein_image);
         delGrumble.delGrumble(img6);
 
-        ImageView img7 = (ImageView) findViewById(R.id.leaf_7);
-        img7.setImageResource(R.drawable.leaf_7);
+        ImageView img7 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_7);
+        img7.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_7);
         img7.startAnimation(fadein_image);
         delGrumble.delGrumble(img7);
 
-        ImageView img8 = (ImageView) findViewById(R.id.leaf_8);
-        img8.setImageResource(R.drawable.leaf_8);
+        ImageView img8 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_8);
+        img8.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_8);
         img8.startAnimation(fadein_image);
         delGrumble.delGrumble(img8);
 
-        ImageView img9 = (ImageView) findViewById(R.id.leaf_9);
-        img9.setImageResource(R.drawable.leaf_9);
+        ImageView img9 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_9);
+        img9.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_9);
         img9.startAnimation(fadein_image);
         delGrumble.delGrumble(img9);
 
-        ImageView img10 = (ImageView) findViewById(R.id.leaf_10);
-        img10.setImageResource(R.drawable.leaf_10);
+        ImageView img10 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_10);
+        img10.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_10);
         img10.startAnimation(fadein_image);
         delGrumble.delGrumble(img10);
 
-        ImageView img11 = (ImageView) findViewById(R.id.leaf_11);
-        img11.setImageResource(R.drawable.leaf_11);
+        ImageView img11 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_11);
+        img11.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_11);
         img11.startAnimation(fadein_image);
         delGrumble.delGrumble(img11);
 
-        ImageView img12 = (ImageView) findViewById(R.id.leaf_12);
-        img12.setImageResource(R.drawable.leaf_12);
+        ImageView img12 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_12);
+        img12.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_12);
         img12.startAnimation(fadein_image);
         delGrumble.delGrumble(img12);
 
-        ImageView img13 = (ImageView) findViewById(R.id.leaf_13);
-        img13.setImageResource(R.drawable.leaf_13);
+        ImageView img13 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_13);
+        img13.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_13);
         img13.startAnimation(fadein_image);
         delGrumble.delGrumble(img13);
 
-        ImageView img14 = (ImageView) findViewById(R.id.leaf_14);
-        img14.setImageResource(R.drawable.leaf_14);
+        ImageView img14 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_14);
+        img14.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_14);
         img14.startAnimation(fadein_image);
         delGrumble.delGrumble(img14);
 
-        ImageView img15 = (ImageView) findViewById(R.id.leaf_15);
-        img15.setImageResource(R.drawable.leaf_15);
+        ImageView img15 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_15);
+        img15.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_15);
         img15.startAnimation(fadein_image);
         delGrumble.delGrumble(img15);
 
-        ImageView img16 = (ImageView) findViewById(R.id.leaf_16);
-        img16.setImageResource(R.drawable.leaf_16);
+        ImageView img16 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_16);
+        img16.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_16);
         img16.startAnimation(fadein_image);
         delGrumble.delGrumble(img16);
 
-        ImageView img17 = (ImageView) findViewById(R.id.leaf_17);
-        img17.setImageResource(R.drawable.leaf_17);
+        ImageView img17 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_17);
+        img17.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_17);
         img17.startAnimation(fadein_image);
         delGrumble.delGrumble(img17);
 
-        ImageView img18 = (ImageView) findViewById(R.id.leaf_18);
-        img18.setImageResource(R.drawable.leaf_18);
+        ImageView img18 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_18);
+        img18.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_18);
         img18.startAnimation(fadein_image);
         delGrumble.delGrumble(img18);
 
-        ImageView img19 = (ImageView) findViewById(R.id.leaf_19);
-        img19.setImageResource(R.drawable.leaf_19);
+        ImageView img19 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_19);
+        img19.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_19);
         img19.startAnimation(fadein_image);
         delGrumble.delGrumble(img19);
 
-        ImageView img20 = (ImageView) findViewById(R.id.leaf_20);
-        img20.setImageResource(R.drawable.leaf_20);
+        ImageView img20 = (ImageView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.leaf_20);
+        img20.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.leaf_20);
         img20.startAnimation(fadein_image);
         delGrumble.delGrumble(img20);
 

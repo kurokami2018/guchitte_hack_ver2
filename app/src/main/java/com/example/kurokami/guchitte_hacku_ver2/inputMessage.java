@@ -1,9 +1,8 @@
-package com.example.kurokami.guchitte_hacku;
+package com.example.kurokami.guchitte_hacku_ver2;
 
 import android.animation.ObjectAnimator;
 import android.view.animation.AlphaAnimation;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class inputMessage extends MainActivity{

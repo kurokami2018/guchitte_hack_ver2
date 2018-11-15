@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="com.example.kurokami.guchitte_hacku.MainActivity">
+    tools:context=".MainActivity">
     
     <ImageButton
         android:id="@+id/b_mon"

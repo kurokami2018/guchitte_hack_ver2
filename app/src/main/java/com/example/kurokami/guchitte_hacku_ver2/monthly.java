@@ -1,4 +1,4 @@
-package com.example.kurokami.guchitte_hacku;
+package com.example.kurokami.guchitte_hacku_ver2;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +23,7 @@ public class monthly extends AppCompatActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_monthly);
+        setContentView(com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_monthly);
 
         Intent intent = getIntent();
         int[] data = intent.getIntArrayExtra( "data" );
@@ -41,291 +41,291 @@ public class monthly extends AppCompatActivity{
         int dec=data[11];
 
         if(jan>9){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView5);
+            ImageView imageView = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView5);
             imageView.setVisibility(View.VISIBLE);
         }
         if(jan>19){
-            ImageView imageView2 = (ImageView)findViewById(R.id.imageView6);
+            ImageView imageView2 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView6);
             imageView2.setVisibility(View.VISIBLE);
         }
         if(jan>29){
-            ImageView imageView3 = (ImageView)findViewById(R.id.imageView7);
+            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView7);
             imageView3.setVisibility(View.VISIBLE);
         }
         if(jan>39){
-            ImageView imageView4 = (ImageView)findViewById(R.id.imageView8);
+            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView8);
             imageView4.setVisibility(View.VISIBLE);
         }
         if(jan>49){
-            ImageView imageView5 = (ImageView)findViewById(R.id.imageView9);
+            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView9);
             imageView5.setVisibility(View.VISIBLE);
         }
         if(jan>59){
-            ImageView imageView6 = (ImageView)findViewById(R.id.imageView10);
+            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView10);
             imageView6.setVisibility(View.VISIBLE);
         }
         if(feb>9){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView5);
+            ImageView imageView = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView5);
             imageView.setVisibility(View.VISIBLE);
         }
         if(feb>19){
-            ImageView imageView2 = (ImageView)findViewById(R.id.imageView6);
+            ImageView imageView2 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView6);
             imageView2.setVisibility(View.VISIBLE);
         }
         if(feb>29){
-            ImageView imageView3 = (ImageView)findViewById(R.id.imageView7);
+            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView7);
             imageView3.setVisibility(View.VISIBLE);
         }
         if(feb>39){
-            ImageView imageView4 = (ImageView)findViewById(R.id.imageView8);
+            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView8);
             imageView4.setVisibility(View.VISIBLE);
         }
         if(feb>49){
-            ImageView imageView5 = (ImageView)findViewById(R.id.imageView9);
+            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView9);
             imageView5.setVisibility(View.VISIBLE);
         }
         if(feb>59){
-            ImageView imageView6 = (ImageView)findViewById(R.id.imageView10);
+            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView10);
             imageView6.setVisibility(View.VISIBLE);
         }
         if(mar>9){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView5);
+            ImageView imageView = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView5);
             imageView.setVisibility(View.VISIBLE);
         }
         if(mar>19){
-            ImageView imageView2 = (ImageView)findViewById(R.id.imageView6);
+            ImageView imageView2 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView6);
             imageView2.setVisibility(View.VISIBLE);
         }
         if(mar>29){
-            ImageView imageView3 = (ImageView)findViewById(R.id.imageView7);
+            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView7);
             imageView3.setVisibility(View.VISIBLE);
         }
         if(mar>39){
-            ImageView imageView4 = (ImageView)findViewById(R.id.imageView8);
+            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView8);
             imageView4.setVisibility(View.VISIBLE);
         }
         if(mar>49){
-            ImageView imageView5 = (ImageView)findViewById(R.id.imageView9);
+            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView9);
             imageView5.setVisibility(View.VISIBLE);
         }
         if(mar>59){
-            ImageView imageView6 = (ImageView)findViewById(R.id.imageView10);
+            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView10);
             imageView6.setVisibility(View.VISIBLE);
         }
         if(apr>9){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView5);
+            ImageView imageView = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView5);
             imageView.setVisibility(View.VISIBLE);
         }
         if(apr>19){
-            ImageView imageView2 = (ImageView)findViewById(R.id.imageView6);
+            ImageView imageView2 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView6);
             imageView2.setVisibility(View.VISIBLE);
         }
         if(apr>29){
-            ImageView imageView3 = (ImageView)findViewById(R.id.imageView7);
+            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView7);
             imageView3.setVisibility(View.VISIBLE);
         }
         if(apr>39){
-            ImageView imageView4 = (ImageView)findViewById(R.id.imageView8);
+            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView8);
             imageView4.setVisibility(View.VISIBLE);
         }
         if(apr>49){
-            ImageView imageView5 = (ImageView)findViewById(R.id.imageView9);
+            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView9);
             imageView5.setVisibility(View.VISIBLE);
         }
         if(apr>59){
-            ImageView imageView6 = (ImageView)findViewById(R.id.imageView10);
+            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView10);
             imageView6.setVisibility(View.VISIBLE);
         }
         if(may>9){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView5);
+            ImageView imageView = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView5);
             imageView.setVisibility(View.VISIBLE);
         }
         if(may>19){
-            ImageView imageView2 = (ImageView)findViewById(R.id.imageView6);
+            ImageView imageView2 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView6);
             imageView2.setVisibility(View.VISIBLE);
         }
         if(may>29){
-            ImageView imageView3 = (ImageView)findViewById(R.id.imageView7);
+            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView7);
             imageView3.setVisibility(View.VISIBLE);
         }
         if(may>39){
-            ImageView imageView4 = (ImageView)findViewById(R.id.imageView8);
+            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView8);
             imageView4.setVisibility(View.VISIBLE);
         }
         if(may>49){
-            ImageView imageView5 = (ImageView)findViewById(R.id.imageView9);
+            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView9);
             imageView5.setVisibility(View.VISIBLE);
         }
         if(may>59){
-            ImageView imageView6 = (ImageView)findViewById(R.id.imageView10);
+            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView10);
             imageView6.setVisibility(View.VISIBLE);
         }
         if(jun>9){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView5);
+            ImageView imageView = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView5);
             imageView.setVisibility(View.VISIBLE);
         }
         if(jun>19){
-            ImageView imageView2 = (ImageView)findViewById(R.id.imageView6);
+            ImageView imageView2 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView6);
             imageView2.setVisibility(View.VISIBLE);
         }
         if(jun>29){
-            ImageView imageView3 = (ImageView)findViewById(R.id.imageView7);
+            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView7);
             imageView3.setVisibility(View.VISIBLE);
         }
         if(jun>39){
-            ImageView imageView4 = (ImageView)findViewById(R.id.imageView8);
+            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView8);
             imageView4.setVisibility(View.VISIBLE);
         }
         if(jun>49){
-            ImageView imageView5 = (ImageView)findViewById(R.id.imageView9);
+            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView9);
             imageView5.setVisibility(View.VISIBLE);
         }
         if(jun>59){
-            ImageView imageView6 = (ImageView)findViewById(R.id.imageView10);
+            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView10);
             imageView6.setVisibility(View.VISIBLE);
         }
         if(jul>9){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView5);
+            ImageView imageView = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView5);
             imageView.setVisibility(View.VISIBLE);
         }
         if(jul>19){
-            ImageView imageView2 = (ImageView)findViewById(R.id.imageView6);
+            ImageView imageView2 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView6);
             imageView2.setVisibility(View.VISIBLE);
         }
         if(jul>29){
-            ImageView imageView3 = (ImageView)findViewById(R.id.imageView7);
+            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView7);
             imageView3.setVisibility(View.VISIBLE);
         }
         if(jul>39){
-            ImageView imageView4 = (ImageView)findViewById(R.id.imageView8);
+            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView8);
             imageView4.setVisibility(View.VISIBLE);
         }
         if(jul>49){
-            ImageView imageView5 = (ImageView)findViewById(R.id.imageView9);
+            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView9);
             imageView5.setVisibility(View.VISIBLE);
         }
         if(jul>59){
-            ImageView imageView6 = (ImageView)findViewById(R.id.imageView10);
+            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView10);
             imageView6.setVisibility(View.VISIBLE);
         }
         if(aug>9){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView5);
+            ImageView imageView = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView5);
             imageView.setVisibility(View.VISIBLE);
         }
         if(aug>19){
-            ImageView imageView2 = (ImageView)findViewById(R.id.imageView6);
+            ImageView imageView2 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView6);
             imageView2.setVisibility(View.VISIBLE);
         }
         if(aug>29){
-            ImageView imageView3 = (ImageView)findViewById(R.id.imageView7);
+            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView7);
             imageView3.setVisibility(View.VISIBLE);
         }
         if(aug>39){
-            ImageView imageView4 = (ImageView)findViewById(R.id.imageView8);
+            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView8);
             imageView4.setVisibility(View.VISIBLE);
         }
         if(aug>49){
-            ImageView imageView5 = (ImageView)findViewById(R.id.imageView9);
+            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView9);
             imageView5.setVisibility(View.VISIBLE);
         }
         if(aug>59){
-            ImageView imageView6 = (ImageView)findViewById(R.id.imageView10);
+            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView10);
             imageView6.setVisibility(View.VISIBLE);
         }
         if(sep>9){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView5);
+            ImageView imageView = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView5);
             imageView.setVisibility(View.VISIBLE);
         }
         if(sep>19){
-            ImageView imageView2 = (ImageView)findViewById(R.id.imageView6);
+            ImageView imageView2 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView6);
             imageView2.setVisibility(View.VISIBLE);
         }
         if(sep>29){
-            ImageView imageView3 = (ImageView)findViewById(R.id.imageView7);
+            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView7);
             imageView3.setVisibility(View.VISIBLE);
         }
         if(sep>39){
-            ImageView imageView4 = (ImageView)findViewById(R.id.imageView8);
+            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView8);
             imageView4.setVisibility(View.VISIBLE);
         }
         if(sep>49){
-            ImageView imageView5 = (ImageView)findViewById(R.id.imageView9);
+            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView9);
             imageView5.setVisibility(View.VISIBLE);
         }
         if(sep>59){
-            ImageView imageView6 = (ImageView)findViewById(R.id.imageView10);
+            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView10);
             imageView6.setVisibility(View.VISIBLE);
         }
         if(oct>9){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView5);
+            ImageView imageView = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView5);
             imageView.setVisibility(View.VISIBLE);
         }
         if(oct>19){
-            ImageView imageView2 = (ImageView)findViewById(R.id.imageView6);
+            ImageView imageView2 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView6);
             imageView2.setVisibility(View.VISIBLE);
         }
         if(oct>29){
-            ImageView imageView3 = (ImageView)findViewById(R.id.imageView7);
+            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView7);
             imageView3.setVisibility(View.VISIBLE);
         }
         if(oct>39){
-            ImageView imageView4 = (ImageView)findViewById(R.id.imageView8);
+            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView8);
             imageView4.setVisibility(View.VISIBLE);
         }
         if(oct>49){
-            ImageView imageView5 = (ImageView)findViewById(R.id.imageView9);
+            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView9);
             imageView5.setVisibility(View.VISIBLE);
         }
         if(oct>59){
-            ImageView imageView6 = (ImageView)findViewById(R.id.imageView10);
+            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView10);
             imageView6.setVisibility(View.VISIBLE);
         }
         if(nov>9){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView5);
+            ImageView imageView = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView5);
             imageView.setVisibility(View.VISIBLE);
         }
         if(nov>19){
-            ImageView imageView2 = (ImageView)findViewById(R.id.imageView6);
+            ImageView imageView2 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView6);
             imageView2.setVisibility(View.VISIBLE);
         }
         if(nov>29){
-            ImageView imageView3 = (ImageView)findViewById(R.id.imageView7);
+            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView7);
             imageView3.setVisibility(View.VISIBLE);
         }
         if(nov>39){
-            ImageView imageView4 = (ImageView)findViewById(R.id.imageView8);
+            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView8);
             imageView4.setVisibility(View.VISIBLE);
         }
         if(nov>49){
-            ImageView imageView5 = (ImageView)findViewById(R.id.imageView9);
+            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView9);
             imageView5.setVisibility(View.VISIBLE);
         }
         if(nov>59){
-            ImageView imageView6 = (ImageView)findViewById(R.id.imageView10);
+            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView10);
             imageView6.setVisibility(View.VISIBLE);
         }
         if(dec>9){
-            ImageView imageView = (ImageView)findViewById(R.id.imageView5);
+            ImageView imageView = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView5);
             imageView.setVisibility(View.VISIBLE);
         }
         if(dec>19){
-            ImageView imageView2 = (ImageView)findViewById(R.id.imageView6);
+            ImageView imageView2 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView6);
             imageView2.setVisibility(View.VISIBLE);
         }
         if(dec>29){
-            ImageView imageView3 = (ImageView)findViewById(R.id.imageView7);
+            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView7);
             imageView3.setVisibility(View.VISIBLE);
         }
         if(dec>39){
-            ImageView imageView4 = (ImageView)findViewById(R.id.imageView8);
+            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView8);
             imageView4.setVisibility(View.VISIBLE);
         }
         if(dec>49){
-            ImageView imageView5 = (ImageView)findViewById(R.id.imageView9);
+            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView9);
             imageView5.setVisibility(View.VISIBLE);
         }
         if(dec>59){
-            ImageView imageView6 = (ImageView)findViewById(R.id.imageView10);
+            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView10);
             imageView6.setVisibility(View.VISIBLE);
         }
         // int ypos=1000000;//初期値入れてくださいby今野

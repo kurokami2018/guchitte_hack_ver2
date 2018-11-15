@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         //Calenderを取得、MainActivityでしか取得できないから動かさない
 
         Calendar cal = Calendar.getInstance();
-        int month = cal.get(Calendar.MONTH)+1; //月を取得
+        int month = getThisMonth(); //月を取得
 
         int lastMonth = sharedPreferences.getInt("lastMonth_data", 0);//前回のログインした月をしまっておく
         SharedPreferences.Editor editer = sharedPreferences.edit();
@@ -49,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_main);
 
 
-        Calendar cal = Calendar.getInstance();
-        int month = cal.get(Calendar.MONTH)+1; //月を取得
+        int month = getThisMonth(); //月を取得
 
         //呟きを入力・消えるview
         ImageButton button = (ImageButton) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.button);
@@ -62,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 fadein_image.setDuration(1000);
                 InputMessage.inputMessage(editText,textView);
                 leaf();
-                Calendar cal = Calendar.getInstance();
-                int month = cal.get(Calendar.MONTH)+1; //月を取得
+                int month = getThisMonth(); //月を取得
                 addGruCounter(month);
                 backgroundChange(month);
             }

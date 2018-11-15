@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class delGrumble extends MainActivity {
+public class DelGrumble extends MainActivity {
     //エフェクト
     public static void delGrumble(ImageView img) {
 

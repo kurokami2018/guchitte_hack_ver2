@@ -5,7 +5,7 @@ import android.view.animation.AlphaAnimation;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class inputMessage extends MainActivity{
+public class InputMessage extends MainActivity{
 
     public static void inputMessage(EditText editText, TextView textView) {
         // 入力された文を取得
@@ -38,5 +38,4 @@ public class inputMessage extends MainActivity{
 
     }
 }
-
 

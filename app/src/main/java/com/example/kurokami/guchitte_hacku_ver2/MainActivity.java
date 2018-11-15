@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 leaf();
                 int month = getThisMonth(); //月を取得
                 addGruCounter(month);
-                backgroundChange(month);
+                backgroundChange();
             }
         });
 
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        backgroundChange(month);
+        backgroundChange();
     }
 
 
@@ -157,8 +157,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //愚痴カウンタに応じて背景画面の変更をします
-    void backgroundChange(int month){
-        int count=getCounter(month);
+    void backgroundChange(){
         ConstraintLayout layout = (ConstraintLayout) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.main);
         if(count<10)layout.setBackgroundResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.back_1_r);
         if(count>=10 && count<=20)layout.setBackgroundResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.back_2_r);

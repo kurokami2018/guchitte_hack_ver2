@@ -17,6 +17,7 @@ import android.support.v4.app.AppLaunchChecker;
 
 
 public class MainActivity extends AppCompatActivity {
+    static int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,29 +25,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_main);
 
         forBeginner();//アプリを初回起動の時だけ出てくる説明画像を表示する
-
-        SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
-        //Calenderを取得、MainActivityでしか取得できないから動かさない
-
+        count = 0;//アプリ起動時のカウンタを0にする
+        SharedPreferences spf = getSharedPreferences("data", Context.MODE_PRIVATE);
         int month = getThisMonth(); //月を取得
-
-        int lastMonth = sharedPreferences.getInt("lastMonth_data", 0);//前回のログインした月をしまっておく
-        SharedPreferences.Editor editer = sharedPreferences.edit();
-
-        if((lastMonth!=month)&&((month==1) || (lastMonth==0))) {
-            emptyMonthLog();
-        }
-
-        SharedPreferences.Editor e = sharedPreferences.edit();
+        int lastMonth = spf.getInt("lastMonth_data", 0);//前回のログインした月取り出す
+        SharedPreferences.Editor e = spf.edit();
         e.putInt("lastMonth_data", month);//キーをnew_monthとしてmonthをプレファレンスに保存
         e.commit();//保存実行
+
+        if((lastMonth!=month)&&((month==1) || (lastMonth==0))) {
+            deleteMonthLog(spf);
+        }
 
     }
     //onResume
     protected void onResume() {
         super.onResume();
         setContentView(com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_main);
-
 
         int month = getThisMonth(); //月を取得
 
@@ -94,9 +89,8 @@ public class MainActivity extends AppCompatActivity {
             //タップされたら画面を閉じるみたいな機能をつけて完了のはず
         }
     }
-    void emptyMonthLog(){//ArrayListの中身だけ消去する
-        SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
-        SharedPreferences.Editor e = sharedPreferences.edit();
+    void deleteMonthLog(SharedPreferences spf){//ArrayListの中身だけ消去する
+        SharedPreferences.Editor e = spf.edit();
         e.remove("1");
         e.remove("2");
         e.remove("3");
@@ -116,22 +110,21 @@ public class MainActivity extends AppCompatActivity {
         int month = cal.get(Calendar.MONTH)+1; //月を取得
         return month;
     }
-    void addGruCounter(int month){//gruCounterに++するメソッド引数なし、リターンもなし
-        SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
-        SharedPreferences.Editor e = sharedPreferences.edit();
+    void addGruCounter(int month,SharedPreferences spf){//gruCounterに++するメソッド引数なし、リターンもなし
+        SharedPreferences.Editor e = spf.edit();
         int gruCounter = 0;
-        if(month==1)gruCounter=sharedPreferences.getInt("1", 0);
-        if(month==2)gruCounter=sharedPreferences.getInt("2", 0);
-        if(month==3)gruCounter=sharedPreferences.getInt("3", 0);;
-        if(month==4)gruCounter=sharedPreferences.getInt("4", 0);
-        if(month==5)gruCounter=sharedPreferences.getInt("5", 0);
-        if(month==6)gruCounter=sharedPreferences.getInt("6", 0);
-        if(month==7)gruCounter=sharedPreferences.getInt("7", 0);
-        if(month==8)gruCounter=sharedPreferences.getInt("8", 0);
-        if(month==9)gruCounter=sharedPreferences.getInt("9", 0);
-        if(month==10)gruCounter=sharedPreferences.getInt("10", 0);
-        if(month==11)gruCounter=sharedPreferences.getInt("11", 0);
-        if(month==12)gruCounter=sharedPreferences.getInt("12", 0);
+        if(month==1)gruCounter=spf.getInt("1", 0);
+        if(month==2)gruCounter=spf.getInt("2", 0);
+        if(month==3)gruCounter=spf.getInt("3", 0);;
+        if(month==4)gruCounter=spf.getInt("4", 0);
+        if(month==5)gruCounter=spf.getInt("5", 0);
+        if(month==6)gruCounter=spf.getInt("6", 0);
+        if(month==7)gruCounter=spf.getInt("7", 0);
+        if(month==8)gruCounter=spf.getInt("8", 0);
+        if(month==9)gruCounter=spf.getInt("9", 0);
+        if(month==10)gruCounter=spf.getInt("10", 0);
+        if(month==11)gruCounter=spf.getInt("11", 0);
+        if(month==12)gruCounter=spf.getInt("12", 0);
         gruCounter++;
         if(month==1){e.putInt("1",gruCounter);e.commit();}
         if(month==2){e.putInt("2",gruCounter);e.commit();}
@@ -146,21 +139,20 @@ public class MainActivity extends AppCompatActivity {
         if(month==11){e.putInt("11",gruCounter);e.commit();}
         if(month==12){e.putInt("12",gruCounter);e.commit();}
     }
-    int getCounter(int month){//gruCounterを獲得するメソッド
+    int getCounter(int month,SharedPreferences spf){//gruCounterを獲得するメソッド
         int gruCounter=0;
-        SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
-        if(month==1)gruCounter=sharedPreferences.getInt("1", 0);
-        if(month==2)gruCounter=sharedPreferences.getInt("2", 0);
-        if(month==3)gruCounter=sharedPreferences.getInt("3", 0);;
-        if(month==4)gruCounter=sharedPreferences.getInt("4", 0);
-        if(month==5)gruCounter=sharedPreferences.getInt("5", 0);
-        if(month==6)gruCounter=sharedPreferences.getInt("6", 0);
-        if(month==7)gruCounter=sharedPreferences.getInt("7", 0);
-        if(month==8)gruCounter=sharedPreferences.getInt("8", 0);
-        if(month==9)gruCounter=sharedPreferences.getInt("9", 0);
-        if(month==10)gruCounter=sharedPreferences.getInt("10", 0);
-        if(month==11)gruCounter=sharedPreferences.getInt("11", 0);
-        if(month==12)gruCounter=sharedPreferences.getInt("12", 0);
+        if(month==1)gruCounter=spf.getInt("1", 0);
+        if(month==2)gruCounter=spf.getInt("2", 0);
+        if(month==3)gruCounter=spf.getInt("3", 0);;
+        if(month==4)gruCounter=spf.getInt("4", 0);
+        if(month==5)gruCounter=spf.getInt("5", 0);
+        if(month==6)gruCounter=spf.getInt("6", 0);
+        if(month==7)gruCounter=spf.getInt("7", 0);
+        if(month==8)gruCounter=spf.getInt("8", 0);
+        if(month==9)gruCounter=spf.getInt("9", 0);
+        if(month==10)gruCounter=spf.getInt("10", 0);
+        if(month==11)gruCounter=spf.getInt("11", 0);
+        if(month==12)gruCounter=spf.getInt("12", 0);
         return gruCounter;
     }
 
@@ -273,21 +265,21 @@ public class MainActivity extends AppCompatActivity {
         DelGrumble.delGrumble(img20);
 
     }
-    int[] makeArray(){
+    int[] makeArray(SharedPreferences spf){
         SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
-        int jan = sharedPreferences.getInt("1", 0);
-        int feb = sharedPreferences.getInt("2", 0);
-        int mar = sharedPreferences.getInt("3", 0);
-        int apr = sharedPreferences.getInt("4", 0);
-        int may = sharedPreferences.getInt("5", 0);
-        int jun = sharedPreferences.getInt("6", 0);
-        int jul = sharedPreferences.getInt("7", 0);
-        int aug = sharedPreferences.getInt("8", 0);
-        int sep = sharedPreferences.getInt("9", 0);
-        int oct = sharedPreferences.getInt("10", 0);
-        int nov = sharedPreferences.getInt("11", 0);
-        int dec = sharedPreferences.getInt("12", 0);
-       int[] data = new int[]{jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec};
+        int jan = spf.getInt("1", 0);
+        int feb = spf.getInt("2", 0);
+        int mar = spf.getInt("3", 0);
+        int apr = spf.getInt("4", 0);
+        int may = spf.getInt("5", 0);
+        int jun = spf.getInt("6", 0);
+        int jul = spf.getInt("7", 0);
+        int aug = spf.getInt("8", 0);
+        int sep = spf.getInt("9", 0);
+        int oct = spf.getInt("10", 0);
+        int nov = spf.getInt("11", 0);
+        int dec = spf.getInt("12", 0);
+       int[] data = {jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec};
         return data;
 
     }

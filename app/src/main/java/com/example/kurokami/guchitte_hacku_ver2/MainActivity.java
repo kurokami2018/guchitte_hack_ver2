@@ -25,11 +25,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_main);
 
         forBeginner();//アプリを初回起動の時だけ出てくる説明画像を表示する
-        count = 0;//アプリ起動時のカウンタを0にする
-        SharedPreferences spf = getSharedPreferences("data", Context.MODE_PRIVATE);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
+        //Calenderを取得、MainActivityでしか取得できないから動かさない
+
         int month = getThisMonth(); //月を取得
-        int lastMonth = spf.getInt("lastMonth_data", 0);//前回のログインした月取り出す
-        SharedPreferences.Editor e = spf.edit();
+
+        int lastMonth = sharedPreferences.getInt("lastMonth_data", 0);//前回のログインした月をしまっておく
+        SharedPreferences.Editor editer = sharedPreferences.edit();
+
+        if((lastMonth!=month)&&((month==1) || (lastMonth==0))) {
+            deleteMonthLog();
+        }
+
+        SharedPreferences.Editor e = sharedPreferences.edit();
         e.putInt("lastMonth_data", month);//キーをnew_monthとしてmonthをプレファレンスに保存
         e.commit();//保存実行
 
@@ -42,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setContentView(com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_main);
+
 
         int month = getThisMonth(); //月を取得
 

@@ -68,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
         monthButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Sub 画面を起動
-                Intent intent = new Intent();
-                intent.setClassName("com.example.kurokami.guchitte_hacku_ver2", "Monthly");
+                Intent intent = new Intent(MainActivity.this,com.example.kurokami.guchitte_hacku_ver2.Monthly.class);
+                //intent.setClassName("com.example.kurokami.guchitte_hacku_ver2", "Monthly");
                 int[] data = makeArray(spf);
                 intent.putExtra("data",data);
                 startActivity(intent);
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     void forBeginner() {
         boolean before = AppLaunchChecker.hasStartedFromLauncher(this);
         if (before == false) {
-            ImageView imageView = new ImageView(this);//表示する場所と思われるthisか？
+            ImageView imageView = new ImageView(this);
             imageView.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.exp);
             setContentView(imageView);
             //ファイル名わかったら書き換えること

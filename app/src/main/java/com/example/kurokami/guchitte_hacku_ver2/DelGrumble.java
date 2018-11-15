@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class DelGrumble extends MainActivity {
     //エフェクト
-    public static void delGrumble(ImageView img) {
+    public static void DelGrumble(ImageView img) {
 
         AnimatorSet animatorSet = new AnimatorSet();
         ;

@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".monthly"></activity>
+        <activity android:name=".Monthly"></activity>
 
     </application>
 

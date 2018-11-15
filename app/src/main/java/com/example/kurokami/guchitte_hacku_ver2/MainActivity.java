@@ -18,6 +18,7 @@ import android.support.v4.app.AppLaunchChecker;
 
 public class MainActivity extends AppCompatActivity {
     static int count;
+    SharedPreferences spf = getSharedPreferences("data", Context.MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,20 +26,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_main);
 
         forBeginner();//アプリを初回起動の時だけ出てくる説明画像を表示する
-
-        SharedPreferences sharedPreferences = getSharedPreferences("data", Context.MODE_PRIVATE);
-        //Calenderを取得、MainActivityでしか取得できないから動かさない
-
+        count = 0;//アプリ起動時のカウンタを0にする
+        //haredPreferences spf = getSharedPreferences("data", Context.MODE_PRIVATE);
         int month = getThisMonth(); //月を取得
-
-        int lastMonth = sharedPreferences.getInt("lastMonth_data", 0);//前回のログインした月をしまっておく
-        SharedPreferences.Editor editer = sharedPreferences.edit();
-
-        if((lastMonth!=month)&&((month==1) || (lastMonth==0))) {
-            deleteMonthLog();
-        }
-
-        SharedPreferences.Editor e = sharedPreferences.edit();
+        int lastMonth = spf.getInt("lastMonth_data", 0);//前回のログインした月取り出す
+        SharedPreferences.Editor e = spf.edit();
         e.putInt("lastMonth_data", month);//キーをnew_monthとしてmonthをプレファレンスに保存
         e.commit();//保存実行
 
@@ -51,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setContentView(com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_main);
-
 
         int month = getThisMonth(); //月を取得
 
@@ -66,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 InputMessage.inputMessage(editText,textView);
                 leaf();
                 int month = getThisMonth(); //月を取得
-                addGruCounter(month);
+                addGruCounter(month,spf);
                 backgroundChange();
             }
         });
@@ -77,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Sub 画面を起動
                 Intent intent = new Intent();
-                intent.setClassName("com.example.kurokami.guchitte_hacku", "monthly");
-                int[] data = makeArray();
+                intent.setClassName("com.example.kurokami.guchitte_hacku_ver2", "monthly");
+                int[] data = makeArray(spf);
                 intent.putExtra("data",data);
                 startActivity(intent);
             }
@@ -122,7 +113,9 @@ public class MainActivity extends AppCompatActivity {
     }
     void addGruCounter(int month,SharedPreferences spf){//gruCounterに++するメソッド引数なし、リターンもなし
         SharedPreferences.Editor e = spf.edit();
-        int gruCounter = 0;
+        String strMonth=String.valueOf(month);
+        int gruCounter = spf.getInt(strMonth, 0);
+        /*
         if(month==1)gruCounter=spf.getInt("1", 0);
         if(month==2)gruCounter=spf.getInt("2", 0);
         if(month==3)gruCounter=spf.getInt("3", 0);;
@@ -135,7 +128,10 @@ public class MainActivity extends AppCompatActivity {
         if(month==10)gruCounter=spf.getInt("10", 0);
         if(month==11)gruCounter=spf.getInt("11", 0);
         if(month==12)gruCounter=spf.getInt("12", 0);
+        */
         gruCounter++;
+        e.putInt(strMonth,gruCounter);e.commit();
+        /*
         if(month==1){e.putInt("1",gruCounter);e.commit();}
         if(month==2){e.putInt("2",gruCounter);e.commit();}
         if(month==3){e.putInt("3",gruCounter);e.commit();}
@@ -148,9 +144,13 @@ public class MainActivity extends AppCompatActivity {
         if(month==10){e.putInt("10",gruCounter);e.commit();}
         if(month==11){e.putInt("11",gruCounter);e.commit();}
         if(month==12){e.putInt("12",gruCounter);e.commit();}
+        */
     }
     int getCounter(int month,SharedPreferences spf){//gruCounterを獲得するメソッド
-        int gruCounter=0;
+        String strMonth=String.valueOf(month);
+        return spf.getInt(strMonth, 0);
+
+        /*
         if(month==1)gruCounter=spf.getInt("1", 0);
         if(month==2)gruCounter=spf.getInt("2", 0);
         if(month==3)gruCounter=spf.getInt("3", 0);;
@@ -164,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
         if(month==11)gruCounter=spf.getInt("11", 0);
         if(month==12)gruCounter=spf.getInt("12", 0);
         return gruCounter;
+        */
     }
 
     //愚痴カウンタに応じて背景画面の変更をします

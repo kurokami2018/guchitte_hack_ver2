@@ -17,7 +17,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Monthly"></activity>
+        <activity
+            android:name=".Monthly"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".Parry"
+            android:label="@string/app_name">
+        </activity>
 
     </application>
 

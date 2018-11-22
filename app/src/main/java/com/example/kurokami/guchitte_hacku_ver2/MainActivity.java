@@ -114,36 +114,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor e = spf.edit();
         String strMonth=String.valueOf(month);
         int gruCounter = spf.getInt(strMonth, 0);
-        /*
-        if(month==1)gruCounter=spf.getInt("1", 0);
-        if(month==2)gruCounter=spf.getInt("2", 0);
-        if(month==3)gruCounter=spf.getInt("3", 0);;
-        if(month==4)gruCounter=spf.getInt("4", 0);
-        if(month==5)gruCounter=spf.getInt("5", 0);
-        if(month==6)gruCounter=spf.getInt("6", 0);
-        if(month==7)gruCounter=spf.getInt("7", 0);
-        if(month==8)gruCounter=spf.getInt("8", 0);
-        if(month==9)gruCounter=spf.getInt("9", 0);
-        if(month==10)gruCounter=spf.getInt("10", 0);
-        if(month==11)gruCounter=spf.getInt("11", 0);
-        if(month==12)gruCounter=spf.getInt("12", 0);
-        */
-        gruCounter++;
+        if(gruCounter<=60)gruCounter++;
         e.putInt(strMonth,gruCounter);e.commit();
-        /*
-        if(month==1){e.putInt("1",gruCounter);e.commit();}
-        if(month==2){e.putInt("2",gruCounter);e.commit();}
-        if(month==3){e.putInt("3",gruCounter);e.commit();}
-        if(month==4){e.putInt("4",gruCounter);e.commit();}
-        if(month==5){e.putInt("5",gruCounter);e.commit();}
-        if(month==6){e.putInt("6",gruCounter);e.commit();}
-        if(month==7){e.putInt("7",gruCounter);e.commit();}
-        if(month==8){e.putInt("8",gruCounter);e.commit();}
-        if(month==9){e.putInt("9",gruCounter);e.commit();}
-        if(month==10){e.putInt("10",gruCounter);e.commit();}
-        if(month==11){e.putInt("11",gruCounter);e.commit();}
-        if(month==12){e.putInt("12",gruCounter);e.commit();}
-        */
+
     }
     int getCounter(int month,SharedPreferences spf){//gruCounterを獲得するメソッド
         String strMonth=String.valueOf(month);
@@ -287,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
         int oct = spf.getInt("10", 0);
         int nov = spf.getInt("11", 0);
         int dec = spf.getInt("12", 0);
-       int[] data = {jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec};
+        int[] data = {jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec};
         return data;
 
     }

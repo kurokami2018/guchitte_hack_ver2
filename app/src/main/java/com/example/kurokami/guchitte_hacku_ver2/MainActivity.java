@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.Calendar;
+import android.text.SpannableStringBuilder;
 import android.support.v4.app.AppLaunchChecker;
 
 
@@ -52,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText editText = (EditText) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.editText);
                 TextView textView = (TextView) findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.textView);
+
+                // エディットテキストのテキストを取得
+                SpannableStringBuilder sb = (SpannableStringBuilder)editText.getText();
+                String str = sb.toString();
+
                 AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
                 fadein_image.setDuration(1000);
                 InputMessage.InputMessage(editText,textView);
@@ -116,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
         int gruCounter = spf.getInt(strMonth, 0);
         if(gruCounter<=60)gruCounter++;
         e.putInt(strMonth,gruCounter);e.commit();
-
     }
     int getCounter(int month,SharedPreferences spf){//gruCounterを獲得するメソッド
         String strMonth=String.valueOf(month);
@@ -262,8 +267,6 @@ public class MainActivity extends AppCompatActivity {
         int dec = spf.getInt("12", 0);
         int[] data = {jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec};
         return data;
-
     }
-
 }
 

@@ -1,13 +1,15 @@
 package com.example.kurokami.guchitte_hacku_ver2;
 
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.view.animation.AlphaAnimation;
 import android.widget.EditText;
 import android.widget.TextView;
 
+@SuppressLint("Registered")
 public class InputMessage extends MainActivity{
 
-    public static void InputMessage(EditText editText, TextView textView) {
+    public static void inputMessage(EditText editText, TextView textView) {
         // 入力された文を取得
         String str = editText.getText().toString();
 

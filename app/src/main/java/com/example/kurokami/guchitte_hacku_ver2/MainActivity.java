@@ -56,11 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
                 // エディットテキストのテキストを取得
                 SpannableStringBuilder sb = (SpannableStringBuilder)editText.getText();
-                String str = sb.toString();
 
                 AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
                 fadein_image.setDuration(1000);
-                InputMessage.InputMessage(editText,textView);
+                InputMessage.inputMessage(editText,textView);
                 leaf();
                 int month = getThisMonth(); //月を取得
                 addGruCounter(month,spf);

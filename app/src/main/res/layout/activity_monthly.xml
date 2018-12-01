@@ -6,10 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/monthly_b"
     tools:context=".MainActivity">
 
-    <!-- スクロール機能 -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,31 +15,23 @@
         tools:layout_editor_absoluteY="0dp"
         tools:ignore="MissingConstraints">
 
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/frameLayout0"
             android:orientation="vertical">
 
-            <!-- リボン背景 -->
-            <LinearLayout
+
+            <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/linearLayout_r"
-                android:scaleType="fitXY">
-
-                <ImageView
-                    android:id="@+id/imageView_r"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/monthly_r" />
-            </LinearLayout>
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/month_b" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/linearLayout1"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -762,5 +752,8 @@
                     app:srcCompat="@drawable/b10f" />
             </LinearLayout>
         </FrameLayout>
+
+
     </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

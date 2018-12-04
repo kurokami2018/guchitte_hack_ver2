@@ -1,21 +1,14 @@
 package com.example.kurokami.guchitte_hacku_ver2;
 
 
-import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.support.v7.app.AppCompatActivity;
-import android.graphics.drawable.*;
 import android.widget.VideoView;
-import android.widget.*;
 import android.media.*;
 
-import org.jetbrains.annotations.*;
-import com.bumptech.glide.request.transition.*;
-import com.bumptech.glide.load.resource.gif.GifDrawable;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.*;
+
 
 
 
@@ -57,11 +50,6 @@ public class GifPlayer_MakeBottle extends AppCompatActivity{
             }
         });
 
-
-
-
-
-        //finish();
     }
 
 }

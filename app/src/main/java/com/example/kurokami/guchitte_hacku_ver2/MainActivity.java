@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        deleteMonthLog( spf );
+        //deleteMonthLog( spf );
     }
 
 

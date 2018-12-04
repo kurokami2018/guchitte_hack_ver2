@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        deleteMonthLog( spf );
     }
 
 
@@ -113,6 +114,10 @@ public class MainActivity extends AppCompatActivity {
         int gruCounter = spf.getInt(strMonth, 0);
         if(gruCounter<=60)gruCounter++;
         e.putInt(strMonth,gruCounter);e.commit();
+        if(gruCounter%30==0) {
+            Intent intent = new Intent(MainActivity.this,com.example.kurokami.guchitte_hacku_ver2.GifPlayer_MakeBottle.class);
+            startActivity(intent);
+        }
 
     }
     int getGruCounter(int month,SharedPreferences spf){//gruCounterを獲得するメソッド
@@ -127,12 +132,6 @@ public class MainActivity extends AppCompatActivity {
         if(count%30<10)layout.setBackgroundResource(R.drawable.back_1_r);
         if(count%30>=10 && count%30<=20)layout.setBackgroundResource(R.drawable.back_2_r);
         if(count%30>20)layout.setBackgroundResource(R.drawable.back_3_r);
-        if(count%30==0) {
-            setContentView(R.layout.gifplayer_makebottle);
-            imageView = (ImageView) findViewById(R.id.imageView1);
-            Glide.with(this).asGif().load(R.raw.bing).into(imageView);
-
-       }
     }
 
     //葉っぱのエフェクト効果設定

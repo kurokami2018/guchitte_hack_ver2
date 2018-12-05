@@ -14,13 +14,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.*;
 import java.util.Calendar;
-
+import java.util.Random;
+import java.lang.*;
+import android.content.res.*;
+import android.graphics.drawable.*;
 
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences spf;
-    int count=0;
-    ImageView imageView;
+    int count;
 
 
     @Override
@@ -56,14 +58,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText editText = (EditText) findViewById(R.id.editText);
                 TextView textView = (TextView) findViewById(R.id.textView);
-                AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
-                fadein_image.setDuration(1000);
+                //AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
+                //fadein_image.setDuration(1000);
                 InputMessage.inputMessage(editText,textView);
-                leaf();
+                MixLeave();
                 int month = getThisMonth(); //月を取得
                 addGruCounter(month,spf);
                 backgroundChange();
                 count=(count+1)%60;
+
+                //MixLeave();
             }
         });
 
@@ -134,6 +138,24 @@ public class MainActivity extends AppCompatActivity {
         if(count%30>20)layout.setBackgroundResource(R.drawable.back_3_r);
     }
 
+    void MixLeave(){
+        Random rnd = new Random();  int rand;
+        AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
+        fadein_image.setDuration(1000);
+
+        for(int i=0; i<20; i++){
+            rand = rnd.nextInt(20)+1;
+            int id = getResources().getIdentifier("leaf_" + (i + 1), "id", getPackageName());
+            ImageView img = (ImageView) findViewById( id );
+            int imageId = getResources().getIdentifier("leaf_" + rand, "drawable", getPackageName());
+            img.setImageResource(imageId);
+            img.startAnimation(fadein_image);
+            DelGrumble.DelGrumble(img);
+
+        }
+    }
+
+    /*
     //葉っぱのエフェクト効果設定
     void leaf(){
         AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
@@ -235,6 +257,8 @@ public class MainActivity extends AppCompatActivity {
         DelGrumble.DelGrumble(img20);
 
     }
+    */
+
     int[] makeArray(SharedPreferences spf){
         int jan = spf.getInt("1", 0);
         int feb = spf.getInt("2", 0);

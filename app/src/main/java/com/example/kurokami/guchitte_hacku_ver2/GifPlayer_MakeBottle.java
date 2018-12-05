@@ -13,7 +13,6 @@ import android.media.*;
 
 
 public class GifPlayer_MakeBottle extends AppCompatActivity{
-    ImageView imageView;
     VideoView videoView;
 
     @Override
@@ -39,13 +38,11 @@ public class GifPlayer_MakeBottle extends AppCompatActivity{
         //*****************   mp4   *********************
         videoView = (VideoView)findViewById( R.id.videoView );
         videoView.setVideoURI( Uri.parse( "android.resource://" + this.getPackageName() + "/" + R.raw.onetimebing ));
-        //videoView.setMediaController(new MediaController(this));
         videoView.start();
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
             @Override
             public void onCompletion(MediaPlayer mp) {
                 // 先頭に戻す -> Repeat
-                //videoView.seekTo(0);
                 finish();
             }
         });

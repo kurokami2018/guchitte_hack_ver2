@@ -77,27 +77,27 @@
         android:id="@+id/leaf_1"
         android:layout_width="48dp"
         android:layout_height="52dp"
-        android:visibility="invisible"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.123"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.716"
-        app:srcCompat="@drawable/leaf_1" />
+        />
 
     <ImageView
         android:id="@+id/leaf_2"
         android:layout_width="41dp"
         android:layout_height="43dp"
-        android:visibility="invisible"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.672"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.698"
-        app:srcCompat="@drawable/leaf_2" />
+       />
 
     <ImageView
         android:id="@+id/leaf_3"
@@ -109,7 +109,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/leaf_3" />
+        />
 
     <ImageView
         android:id="@+id/leaf_4"
@@ -121,7 +121,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/leaf_4" />
+        />
 
 
     <ImageView
@@ -134,7 +134,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/leaf_5" />
+        />
 
     <ImageView
         android:id="@+id/leaf_6"
@@ -147,7 +147,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.714"
-        app:srcCompat="@drawable/leaf_6" />
+        />
 
     <ImageView
         android:id="@+id/leaf_7"
@@ -159,7 +159,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/leaf_7" />
+        />
 
     <ImageView
         android:id="@+id/leaf_8"
@@ -172,7 +172,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.723"
-        app:srcCompat="@drawable/leaf_8" />
+        />
 
     <ImageView
         android:id="@+id/leaf_9"
@@ -185,7 +185,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.701"
-        app:srcCompat="@drawable/leaf_9" />
+      />
 
     <ImageView
         android:id="@+id/leaf_10"
@@ -197,7 +197,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/leaf_10" />
+        />
 
     <ImageView
         android:id="@+id/leaf_11"
@@ -210,7 +210,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.706"
-        app:srcCompat="@drawable/leaf_11" />
+         />
 
 
     <ImageView
@@ -223,7 +223,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/leaf_12" />
+         />
 
     <ImageView
         android:id="@+id/leaf_13"
@@ -235,7 +235,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/leaf_13" />
+        />
 
     <ImageView
         android:id="@+id/leaf_14"
@@ -249,7 +249,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.718"
-        app:srcCompat="@drawable/leaf_14" />
+        />
 
     <ImageView
         android:id="@+id/leaf_15"
@@ -261,7 +261,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/leaf_15" />
+        />
 
     <ImageView
         android:id="@+id/leaf_16"
@@ -273,7 +273,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/leaf_16" />
+       />
 
     <ImageView
         android:id="@+id/leaf_17"
@@ -285,7 +285,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/leaf_17" />
+       />
 
     <ImageView
         android:id="@+id/leaf_18"
@@ -297,7 +297,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/leaf_18" />
+        />
 
     <ImageView
         android:id="@+id/leaf_19"
@@ -309,7 +309,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/leaf_19" />
+         />
 
     <ImageView
         android:id="@+id/leaf_20"
@@ -321,7 +321,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.727"
-        app:srcCompat="@drawable/leaf_20" />
+        />
 
 
     <ImageView

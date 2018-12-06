@@ -12,17 +12,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.bumptech.glide.*;
 import java.util.Calendar;
 import java.util.Random;
 import java.lang.*;
-import android.content.res.*;
-import android.graphics.drawable.*;
+
 
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences spf;
     int count;
+    int resetFlag=0;//新年じゃない
 
 
     @Override
@@ -38,8 +37,10 @@ public class MainActivity extends AppCompatActivity {
         //forBeginner();//アプリを初回起動の時だけ出てくる説明画像を表示する
         int month = getThisMonth(); //月を取得
         int lastMonth = spf.getInt("lastMonth_data", 0);//前回のログインした月取り出す
-
-        if((lastMonth!=month)&&((month==1) || (lastMonth==0)))deleteMonthLog(spf);
+        if((lastMonth!=month)&&((month==1) || (lastMonth==0))){
+            deleteMonthLog(spf);
+            resetFlag=1;
+        }
 
         SharedPreferences.Editor e = spf.edit();
         e.putInt("lastMonth_data", month);//キーをnew_monthとしてmonthをプレファレンスに保存
@@ -58,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText editText = (EditText) findViewById(R.id.editText);
                 TextView textView = (TextView) findViewById(R.id.textView);
-                //AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
-                //fadein_image.setDuration(1000);
                 InputMessage.inputMessage(editText,textView);
                 MixLeave();
                 int month = getThisMonth(); //月を取得
@@ -67,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 backgroundChange();
                 count=(count+1)%60;
 
-                //MixLeave();
             }
         });
 
@@ -78,8 +76,10 @@ public class MainActivity extends AppCompatActivity {
                 // Sub 画面を起動
                 Intent intent = new Intent(MainActivity.this,com.example.kurokami.guchitte_hacku_ver2.Monthly.class);
                 //intent.setClassName("com.example.kurokami.guchitte_hacku_ver2", "Monthly");
-                int[] data = makeArray(spf);
-                intent.putExtra("data",data);
+                //int[] data = makeArray(spf);
+
+                intent.putExtra("resetFlag",resetFlag);
+                intent.putExtra( "gruCounter",count );
                 startActivity(intent);
             }
         });
@@ -107,11 +107,13 @@ public class MainActivity extends AppCompatActivity {
         e.remove("7");e.remove("8");e.remove("9");e.remove("10");e.remove("11");e.remove("12");
         e.commit();
     }
+
     int getThisMonth(){
         Calendar cal = Calendar.getInstance();
         int month = cal.get(Calendar.MONTH)+1; //月を取得
         return month;
     }
+
     void addGruCounter(int month,SharedPreferences spf){//gruCounterに++するメソッド引数なし、リターンもなし
         SharedPreferences.Editor e = spf.edit();
         String strMonth=String.valueOf(month);
@@ -260,6 +262,7 @@ public class MainActivity extends AppCompatActivity {
     */
 
     int[] makeArray(SharedPreferences spf){
+
         int jan = spf.getInt("1", 0);
         int feb = spf.getInt("2", 0);
         int mar = spf.getInt("3", 0);

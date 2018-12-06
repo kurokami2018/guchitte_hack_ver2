@@ -14,21 +14,114 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
-public class Monthly extends AppCompatActivity{
+public class Monthly extends AppCompatActivity {
     //月間画面を表示する。listを12ヶ月分全部受け取ってx,y座標を指定してそこに瓶を貼り付けるプログラム
     //スクロールを考慮する必要あり
     //うまくいくなら当月のデータが画面の上端にくるようにするといいと思う
 
     //activity_main.xml(つぶやき画面)から移動するためのコード
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_monthly);
+    int resetFlag = 0;
+    SharedPreferences spf;
+    int[] janBottle;
+    int[] febBottle;
+    int[] marBottle;
+    int[] aprBottle;
+    int[] mayBottle;
+    int[] junBottle;
+    int[] julBottle;
+    int[] augBottle;
+    int[] sepBottle;
+    int[] octBottle;
+    int[] novBottle;
+    int[] decBottle;
 
+    int[][] bottle = {
+            janBottle=new int[6], febBottle=new int[6], marBottle=new int[6],
+            aprBottle=new int[6], mayBottle=new int[6], junBottle=new int[6],
+            julBottle=new int[6], augBottle=new int[6], sepBottle=new int[6],
+            octBottle=new int[6], novBottle=new int[6], decBottle=new int[6]
+    };
+
+
+    @Override
+    public void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_monthly );
+        spf = getSharedPreferences( "data", Context.MODE_PRIVATE );
+        for (int i = 0; i < 12; i++) {
+            String str = spf.getString( String.valueOf( i ), "0" );
+            setBottleFromSpf( str, i + 1 );
+        }
         Intent intent = getIntent();
-        int[] data = intent.getIntArrayExtra( "data" );
+
+        resetFlag = intent.getIntExtra("resultFlag" ,0);
+        resetBottles();
+
+        Calendar cal = Calendar.getInstance();
+        int month = cal.get( Calendar.MONTH ) + 1; //月を取得
+        int GruCounter = intent.getIntExtra( "gruCounter",0 );//今月の愚痴カウンターをもらいたい
+        int incremental = (GruCounter / 30) - getNumOfBottle( month );
+        for (int i = 0; i < incremental; i++) choiceAndSetBottle( month );
+
+        for (int i = 1; i <= month; i++) displayBottles( i );
+
+    }
+
+    public void setBottleFromSpf( String str, int month ) {
+        String[] strings = str.split( ",", 6 );
+        for (int i = 0; i < strings.length; i++) bottle[month - 1][i] = Integer.parseInt( strings[i] );
+    }
+
+    public String ArrToStr( int month ) {
+        StringBuilder sb = new StringBuilder();
+        int[] arr = bottle[month - 1];
+        for (int i=0;i<6;i++) sb.append( arr[i] + "," );
+        return sb.toString();
+    }
+
+    public void choiceAndSetBottle( int month ) {//ここをで配列の先頭にある空欄にボトルをランダムで配置しています。人口知能を入れるならここを弄る
+        Random rdm = new Random();
+        int rand = rdm.nextInt( 15 ) + 1;
+        for (int i = 0; i < 6; i++) {
+            if (bottle[month - 1][i] == 0) {
+                bottle[month - 1][i] = rand;
+                break;
+            }
+        }
+        String thisMonth = String.valueOf( month );
+        spf.edit().putString( thisMonth, ArrToStr( month ) ).commit();//今月のボトルをspfに保存
+    }
+
+    public void displayBottles( int month ) {
+        for (int i = 1; i <= month; i++) {
+            for (int j = 0; j < 6; j++) {
+                if (bottle[i - 1][j] != 0) {
+                    int a = (month - 1) * 6 + j + 1;
+                    int id = getResources().getIdentifier( "imageView" + a, "id", getPackageName() );
+                    ImageView img = (ImageView) findViewById( id );
+                    int imageId = getResources().getIdentifier( "b" + getNumOfBottle( month ) + "f", "drawable", getPackageName() );
+                    img.setImageResource( imageId );
+                }
+            }
+        }
+    }
+
+    public int getNumOfBottle( int month ) {
+        int count = 0;
+        for (int i = 0; i < 6; i++) if (bottle[month - 1][i] == 0) count++;
+        return count;
+    }
+
+    public void resetBottles() {
+        if (resetFlag == 1) spf.edit().clear().commit();
+    }
+
+
+        /*
         int jan=data[0];
         int feb=data[1];
         int mar=data[2];
@@ -315,104 +408,28 @@ public class Monthly extends AppCompatActivity{
             imageView2.setVisibility(View.VISIBLE);
         }
         if(dec>29){
-            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView73);
+            ImageView imageView3 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView1);
             imageView3.setVisibility(View.VISIBLE);
         }
         if(dec>39){
-            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView74);
+            ImageView imageView4 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView2);
             imageView4.setVisibility(View.VISIBLE);
         }
         if(dec>49){
-            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView75);
+            ImageView imageView5 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView3);
             imageView5.setVisibility(View.VISIBLE);
         }
         if(dec>59){
-            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView76);
+            ImageView imageView6 = (ImageView)findViewById(com.example.kurokami.guchitte_hacku_ver2.R.id.imageView4);
             imageView6.setVisibility(View.VISIBLE);
         }
-        // int ypos=1000000;//初期値入れてくださいby今野
-        // tiedBottle(month,ypos);
-    }
 
 
-/*
-    void tiedBottle(int month,int ypos){
-        ArrayList thisMonth;
-        int number,xpos;
-        for(int i=0;i<12;i++){
-            xpos=100000000;//初期値入れてくださいby今野
-            thisMonth=MainActivity.getMonthLog(month+i);
-            drawMonthPic(month+1);
-            for(int j=0;j<thisMonth.size();j++){
-                number= (int) thisMonth.get(j);
-                if(number==0)break;
-                xpos=xpos+(50000000*j);//横にずらしていく数字を直してくださいby今野
-                setBottle(number,xpos,ypos);
-            }
-            ypos=ypos+1000000000;//縦にずらしていく数字を直してくださいby今野
-        }
-    }
-
-    void setBottle(int colorNumber,int xpos,int ypos) {
-        if(colorNumber==1){
-
-        }
-        if(colorNumber==2){
-
-        }
-        if(colorNumber==3){
-
-        }
-        if(colorNumber==4){
-
-        }
-        if(colorNumber==5){
-
-        }
-        if(colorNumber==6){
-
-        }
-        if(colorNumber==7){
-
-        }
-        if(colorNumber==8){
-
-        }
-        if(colorNumber==9){
-
-        }
-        if(colorNumber==10){
-
-        }
-        if(colorNumber==11){
-
-        }
-        if(colorNumber==12){
-
-        }
-    }
-    int newYearChecker(int month){//monthに１ずつ足していって13月とかができないようにするためのもの
-        if(month>12){
-            month=month-12;
-            return month;
-        }
-        else return month;
-    }
-    void drawMonthPic(int month){
-        //今日が何月か所得してその月が一番上に来るようにするなら、何月って書いてある絵も動かさないといけないかと思ったので作りました
-        if(month==1);//"1月"って書いてある絵を貼る
-        if(month==2);
-        if(month==3);
-        if(month==4);
-        if(month==5);
-        if(month==6);
-        if(month==7);
-        if(month==8);
-        if(month==9);
-        if(month==10);
-        if(month==11);
-        if(month==12);
     }
     */
+
+
+
+
 }
 

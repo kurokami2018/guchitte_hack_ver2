@@ -20,7 +20,7 @@ import java.lang.*;
 
 public class MainActivity extends AppCompatActivity {
     SharedPreferences spf;
-    int count;
+    int gruCounter;
     int resetFlag=0;//新年じゃない
 
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         spf = getSharedPreferences("data", Context.MODE_PRIVATE);
-        count=getGruCounter(getThisMonth(),spf);
+        gruCounter=getGruCounter(getThisMonth(),spf);
 
         backgroundChange();
 
@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
                 int month = getThisMonth(); //月を取得
                 addGruCounter(month,spf);
                 backgroundChange();
-                count=(count+1)%60;
 
             }
         });
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 //int[] data = makeArray(spf);
 
                 intent.putExtra("resetFlag",resetFlag);
-                intent.putExtra( "gruCounter",count );
+                intent.putExtra( "gruCounter",gruCounter );
                 startActivity(intent);
             }
         });
@@ -103,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
 
     void deleteMonthLog(SharedPreferences spf){//ArrayListの中身だけ消去する
         SharedPreferences.Editor e = spf.edit();
-        e.remove("1");e.remove("2");e.remove("3");e.remove("4");e.remove("5");e.remove("6");
-        e.remove("7");e.remove("8");e.remove("9");e.remove("10");e.remove("11");e.remove("12");
+        e.remove("gruCounter_1");e.remove("gruCounter_2");e.remove("gruCounter_3");e.remove("gruCounter_4");e.remove("gruCounter_5");e.remove("gruCounter_6");
+        e.remove("gruCounter_7");e.remove("gruCounter_8");e.remove("gruCounter_9");e.remove("gruCounter_10");e.remove("gruCounter_11");e.remove("gruCounter_12");
         e.commit();
     }
 
@@ -117,9 +116,8 @@ public class MainActivity extends AppCompatActivity {
     void addGruCounter(int month,SharedPreferences spf){//gruCounterに++するメソッド引数なし、リターンもなし
         SharedPreferences.Editor e = spf.edit();
         String strMonth=String.valueOf(month);
-        int gruCounter = spf.getInt(strMonth, 0);
-        if(gruCounter<=60)gruCounter++;
-        e.putInt(strMonth,gruCounter);e.commit();
+        gruCounter=(gruCounter+1)%180;
+        e.putInt("gruCounter_"+strMonth,gruCounter);e.commit();
         if(gruCounter%30==0) {
             Intent intent = new Intent(MainActivity.this,com.example.kurokami.guchitte_hacku_ver2.GifPlayer_MakeBottle.class);
             startActivity(intent);
@@ -127,17 +125,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
     int getGruCounter(int month,SharedPreferences spf){//gruCounterを獲得するメソッド
-        String strMonth=String.valueOf(month);
-        return spf.getInt(strMonth, 0);
-
+        String strMonth = String.valueOf( month );
+        return spf.getInt("gruCounter_"+strMonth, 0);
     }
 
     //愚痴カウンタに応じて背景画面の変更をします
     void backgroundChange(){
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.main);
-        if(count%30<10)layout.setBackgroundResource(R.drawable.back_1_r);
-        if(count%30>=10 && count%30<=20)layout.setBackgroundResource(R.drawable.back_2_r);
-        if(count%30>20)layout.setBackgroundResource(R.drawable.back_3_r);
+        if(gruCounter%30<10)layout.setBackgroundResource(R.drawable.back_1_r);
+        if(gruCounter%30>=10 && gruCounter%30<=20)layout.setBackgroundResource(R.drawable.back_2_r);
+        if(gruCounter%30>20)layout.setBackgroundResource(R.drawable.back_3_r);
     }
 
     void MixLeave(){
@@ -259,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
         DelGrumble.DelGrumble(img20);
 
     }
-    */
+
 
     int[] makeArray(SharedPreferences spf){
 
@@ -279,6 +276,7 @@ public class MainActivity extends AppCompatActivity {
         return data;
 
     }
+    */
 
 }
 

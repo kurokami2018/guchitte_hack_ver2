@@ -3,6 +3,7 @@ package com.example.kurokami.guchitte_hacku_ver2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -51,15 +52,16 @@ public class Monthly extends AppCompatActivity {
     public void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_monthly );
-        spf = getSharedPreferences( "data", Context.MODE_PRIVATE );
+        spf = getSharedPreferences( "monthlyData", Context.MODE_PRIVATE );
         for (int i = 0; i < 12; i++) {
-            String str = spf.getString( String.valueOf( i ), "0" );
-            setBottleFromSpf( str, i + 1 );
+            String str = spf.getString( "bottleList_"+String.valueOf( i ), "0" );
+            setBottleFromString( str, (i+1) );
         }
         Intent intent = getIntent();
+        //resetBottles();
 
         resetFlag = intent.getIntExtra("resultFlag" ,0);
-        resetBottles();
+        if(resetFlag==1)resetBottles();
 
         Calendar cal = Calendar.getInstance();
         int month = cal.get( Calendar.MONTH ) + 1; //月を取得
@@ -71,7 +73,7 @@ public class Monthly extends AppCompatActivity {
 
     }
 
-    public void setBottleFromSpf( String str, int month ) {
+    public void setBottleFromString( String str, int month ) {
         String[] strings = str.split( ",", 6 );
         for (int i = 0; i < strings.length; i++) bottle[month - 1][i] = Integer.parseInt( strings[i] );
     }
@@ -85,25 +87,25 @@ public class Monthly extends AppCompatActivity {
 
     public void choiceAndSetBottle( int month ) {//ここをで配列の先頭にある空欄にボトルをランダムで配置しています。人口知能を入れるならここを弄る
         Random rdm = new Random();
-        int rand = rdm.nextInt( 15 ) + 1;
         for (int i = 0; i < 6; i++) {
             if (bottle[month - 1][i] == 0) {
-                bottle[month - 1][i] = rand;
+                bottle[month - 1][i] = rdm.nextInt( 15 ) + 1;
                 break;
             }
         }
         String thisMonth = String.valueOf( month );
-        spf.edit().putString( thisMonth, ArrToStr( month ) ).commit();//今月のボトルをspfに保存
+        SharedPreferences.Editor e = spf.edit();
+        e.putString( "bottleList_"+thisMonth, ArrToStr( month ) ).commit();//今月のボトルをspfに保存
     }
 
     public void displayBottles( int month ) {
         for (int i = 1; i <= month; i++) {
-            for (int j = 0; j < 6; j++) {
+            for (int j = 0; j < bottle[month-1].length; j++) {
                 if (bottle[i - 1][j] != 0) {
                     int a = (month - 1) * 6 + j + 1;
                     int id = getResources().getIdentifier( "imageView" + a, "id", getPackageName() );
                     ImageView img = (ImageView) findViewById( id );
-                    int imageId = getResources().getIdentifier( "b" + getNumOfBottle( month ) + "f", "drawable", getPackageName() );
+                    int imageId = getResources().getIdentifier( "b" + bottle[i-1][j] + "f", "drawable", getPackageName() );
                     img.setImageResource( imageId );
                 }
             }
@@ -112,12 +114,13 @@ public class Monthly extends AppCompatActivity {
 
     public int getNumOfBottle( int month ) {
         int count = 0;
-        for (int i = 0; i < 6; i++) if (bottle[month - 1][i] == 0) count++;
+        for (int i = 0; i < 6; i++) if (bottle[month - 1][i] != 0) count++;
         return count;
     }
 
     public void resetBottles() {
-        if (resetFlag == 1) spf.edit().clear().commit();
+        //if (resetFlag == 1) spf.edit().clear().commit();
+        spf.edit().clear().commit();
     }
 
 

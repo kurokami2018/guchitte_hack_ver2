@@ -21,7 +21,8 @@ import java.lang.*;
 public class MainActivity extends AppCompatActivity {
     SharedPreferences spf;
     int gruCounter;
-    int resetFlag=0;//新年じゃない
+    int limitedCounter;
+    int resetFlag=0;//新年じゃないのがデフォルト
 
 
     @Override
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         spf = getSharedPreferences("data", Context.MODE_PRIVATE);
         gruCounter=getGruCounter(getThisMonth(),spf);
+        limitedCounter=spf.getInt( "limitedCounter",0 );
 
         backgroundChange();
 
@@ -78,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
                 //int[] data = makeArray(spf);
 
                 intent.putExtra("resetFlag",resetFlag);
-                intent.putExtra( "gruCounter",gruCounter );
+                intent.putExtra( "counter",limitedCounter );
                 startActivity(intent);
             }
         });
-        //deleteMonthLog( spf );
+       // deleteMonthLog( spf );
     }
 
 
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor e = spf.edit();
         e.remove("gruCounter_1");e.remove("gruCounter_2");e.remove("gruCounter_3");e.remove("gruCounter_4");e.remove("gruCounter_5");e.remove("gruCounter_6");
         e.remove("gruCounter_7");e.remove("gruCounter_8");e.remove("gruCounter_9");e.remove("gruCounter_10");e.remove("gruCounter_11");e.remove("gruCounter_12");
+        //e.clear();
         e.commit();
     }
 
@@ -116,9 +119,12 @@ public class MainActivity extends AppCompatActivity {
     void addGruCounter(int month,SharedPreferences spf){//gruCounterに++するメソッド引数なし、リターンもなし
         SharedPreferences.Editor e = spf.edit();
         String strMonth=String.valueOf(month);
-        gruCounter=(gruCounter+1)%180;
-        e.putInt("gruCounter_"+strMonth,gruCounter);e.commit();
-        if(gruCounter%30==0) {
+        gruCounter++;
+        limitedCounter=(limitedCounter%180)+1;
+        e.putInt("gruCounter_"+strMonth,gruCounter);
+        e.putInt( "limitedCounter",limitedCounter);
+        e.commit();
+        if(gruCounter%30==0 && gruCounter<=180) {
             Intent intent = new Intent(MainActivity.this,com.example.kurokami.guchitte_hacku_ver2.GifPlayer_MakeBottle.class);
             startActivity(intent);
         }
@@ -132,9 +138,9 @@ public class MainActivity extends AppCompatActivity {
     //愚痴カウンタに応じて背景画面の変更をします
     void backgroundChange(){
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.main);
-        if(gruCounter%30<10)layout.setBackgroundResource(R.drawable.back_1_r);
-        if(gruCounter%30>=10 && gruCounter%30<=20)layout.setBackgroundResource(R.drawable.back_2_r);
-        if(gruCounter%30>20)layout.setBackgroundResource(R.drawable.back_3_r);
+        if(limitedCounter %30<10)layout.setBackgroundResource(R.drawable.back_1_r);
+        if(limitedCounter %30>=10 && limitedCounter %30<=20)layout.setBackgroundResource(R.drawable.back_2_r);
+        if(limitedCounter %30>20)layout.setBackgroundResource(R.drawable.back_3_r);
     }
 
     void MixLeave(){

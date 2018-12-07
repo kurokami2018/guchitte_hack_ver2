@@ -3,42 +3,21 @@ package com.example.kurokami.guchitte_hacku_ver2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Random;
 
 public class Monthly extends AppCompatActivity {
-    //月間画面を表示する。listを12ヶ月分全部受け取ってx,y座標を指定してそこに瓶を貼り付けるプログラム
-    //スクロールを考慮する必要あり
-    //うまくいくなら当月のデータが画面の上端にくるようにするといいと思う
 
     //activity_main.xml(つぶやき画面)から移動するためのコード
     int resetFlag = 0;
     SharedPreferences spf;
-    int[] janBottle;
-    int[] febBottle;
-    int[] marBottle;
-    int[] aprBottle;
-    int[] mayBottle;
-    int[] junBottle;
-    int[] julBottle;
-    int[] augBottle;
-    int[] sepBottle;
-    int[] octBottle;
-    int[] novBottle;
-    int[] decBottle;
+    int[] janBottle; int[] febBottle; int[] marBottle;
+    int[] aprBottle; int[] mayBottle; int[] junBottle;
+    int[] julBottle; int[] augBottle; int[] sepBottle;
+    int[] octBottle; int[] novBottle; int[] decBottle;
 
     int[][] bottle = {
             janBottle=new int[6], febBottle=new int[6], marBottle=new int[6],
@@ -54,7 +33,7 @@ public class Monthly extends AppCompatActivity {
         setContentView( com.example.kurokami.guchitte_hacku_ver2.R.layout.activity_monthly );
         spf = getSharedPreferences( "monthlyData", Context.MODE_PRIVATE );
         for (int i = 0; i < 12; i++) {
-            String str = spf.getString( "bottleList_"+String.valueOf( i ), "0" );
+            String str = spf.getString( "bottleList_"+String.valueOf( i+1 ), "0" );
             setBottleFromString( str, (i+1) );
         }
         Intent intent = getIntent();
@@ -65,7 +44,7 @@ public class Monthly extends AppCompatActivity {
 
         Calendar cal = Calendar.getInstance();
         int month = cal.get( Calendar.MONTH ) + 1; //月を取得
-        int GruCounter = intent.getIntExtra( "gruCounter",0 );//今月の愚痴カウンターをもらいたい
+        int GruCounter = intent.getIntExtra( "counter",0 );//今月の愚痴カウンターをもらいたい
         int incremental = (GruCounter / 30) - getNumOfBottle( month );
         for (int i = 0; i < incremental; i++) choiceAndSetBottle( month );
 
@@ -74,7 +53,7 @@ public class Monthly extends AppCompatActivity {
     }
 
     public void setBottleFromString( String str, int month ) {
-        String[] strings = str.split( ",", 6 );
+        String[] strings = str.split( "," );
         for (int i = 0; i < strings.length; i++) bottle[month - 1][i] = Integer.parseInt( strings[i] );
     }
 
@@ -114,13 +93,14 @@ public class Monthly extends AppCompatActivity {
 
     public int getNumOfBottle( int month ) {
         int count = 0;
-        for (int i = 0; i < 6; i++) if (bottle[month - 1][i] != 0) count++;
+        for (int i = 0; i < 6; i++) {if (bottle[month - 1][i] != 0) count++;}
         return count;
     }
 
     public void resetBottles() {
-        //if (resetFlag == 1) spf.edit().clear().commit();
-        spf.edit().clear().commit();
+        SharedPreferences.Editor e = spf.edit();
+        //if (resetFlag == 1) spf.edit().clear().commit();//本当はこっちを使うんだけど、デバッグ用に今はSharedPreference全消すのを採用
+        e.clear();e.commit();
     }
 
 

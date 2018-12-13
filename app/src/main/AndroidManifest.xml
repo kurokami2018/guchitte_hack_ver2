@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.kurokami.guchitte_hacku_ver2">
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,7 +10,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,20 +24,28 @@
             android:name=".Monthly"
             android:label="@string/app_name" >
         </activity>
+
         <activity
             android:name=".Parry"
             android:label="@string/app_name">
         </activity>
+
         <activity
             android:name=".GifPlayer_MakeBottle"
-            android:label="guchitte!!!">
+            android:label="@string/app_name">
         </activity>
-        <activity
-            android:name=".NaturalLanguageProcessing"
-            android:label="guchitte!!!">
+
+        <activity android:name=".NaturalLanguageProcessing"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" />
+            </intent-filter>
         </activity>
+
     </application>
     <uses-permission android:name="android.permission.INTERNET">
     </uses-permission>
+
 
 </manifest>

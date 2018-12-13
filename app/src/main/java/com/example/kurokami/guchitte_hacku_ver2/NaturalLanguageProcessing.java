@@ -1,18 +1,8 @@
 package com.example.kurokami.guchitte_hacku_ver2;
 
-import android.app.Activity;
 import android.os.Bundle;
-import com.google.gson.*;
-import javax.*;
-//import android.app.DownloadManager.Request;
-import java.net.MalformedURLException;
-import java.net.URL;
-import com.squareup.*;
 import okhttp3.*;
 import java.io.IOException;
-import java.util.*;
-import android.os.AsyncTask;
-
 
 
 
@@ -20,7 +10,7 @@ import android.os.AsyncTask;
  * Created by konnoyuma on 2018/12/12.
  */
 
-public class NaturalLanguageProcessing extends Activity {
+public class NaturalLanguageProcessing extends MainActivity {
     String input;
     String res;
     NaturalLanguageProcessing(String str){
@@ -32,6 +22,7 @@ public class NaturalLanguageProcessing extends Activity {
         super.onCreate( savedInstanceState );
         post();
         //resに結果がすでに入っている
+        System.out.print( res );
 
 
     }

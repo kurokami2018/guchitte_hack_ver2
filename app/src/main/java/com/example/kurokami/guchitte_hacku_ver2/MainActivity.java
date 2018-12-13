@@ -62,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
                 EditText editText = (EditText) findViewById(R.id.editText);
                 TextView textView = (TextView) findViewById(R.id.textView);
                 InputMessage.inputMessage(editText,textView);
+                CharSequence str = editText.getText();
+                str=String.valueOf( str );
+                NaturalLanguageProcessing ai = new NaturalLanguageProcessing((String)str);
                 MixLeave();
                 int month = getThisMonth(); //月を取得
                 addGruCounter(month,spf);

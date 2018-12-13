@@ -29,7 +29,12 @@
             android:name=".GifPlayer_MakeBottle"
             android:label="guchitte!!!">
         </activity>
-
+        <activity
+            android:name=".NaturalLanguageProcessing"
+            android:label="guchitte!!!">
+        </activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET">
+    </uses-permission>
 
 </manifest>

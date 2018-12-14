@@ -12,8 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import java.util.Calendar;
-import java.util.Random;
+import java.util.*;
+import android.util.Log;
 import java.lang.*;
 
 
@@ -61,10 +61,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 EditText editText = (EditText) findViewById(R.id.editText);
                 TextView textView = (TextView) findViewById(R.id.textView);
-                InputMessage.inputMessage(editText,textView);
-                CharSequence str = editText.getText();
-                str=String.valueOf( str );
+                String str = editText.getText().toString();
                 NaturalLanguageProcessing ai = new NaturalLanguageProcessing((String)str);
+                Log.d("onClick","変数 ai.res は「" + ai.res + "」");
+                InputMessage.inputMessage(editText,textView);
                 MixLeave();
                 int month = getThisMonth(); //月を取得
                 addGruCounter(month,spf);

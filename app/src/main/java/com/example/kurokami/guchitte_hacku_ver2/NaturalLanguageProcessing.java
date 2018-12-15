@@ -3,6 +3,8 @@ package com.example.kurokami.guchitte_hacku_ver2;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import okhttp3.*;
 import java.io.IOException;
 
@@ -15,7 +17,7 @@ import java.io.IOException;
 
 public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
     String input;
-    String res;
+    String res,utf;
     NaturalLanguageProcessing(){
         super();
     }
@@ -27,19 +29,25 @@ public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground( Void... voids ) {
-        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-        RequestBody body = RequestBody.create( JSON,input );
+        MediaType JSON = MediaType.parse("application/x-www-form-urlencoded; charset=utf-8");
+        try {
+            input = URLEncoder.encode(input,"utf8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        utf = "text="+input;
+        RequestBody body = RequestBody.create( JSON, utf);
 
         String APIkey="396a686f34794531527568675a6a642f6b4743722e786a52787776754a737241554c4e74687a3338556841";
         String url="https://api.apigw.smt.docomo.ne.jp/truetext/v1/clusteranalytics?APIKEY="+APIkey;
 
 
         Request request = new Request.Builder()
-                .header( "Content-Type","application/x-www-form-urlencoded" )
+                .header( "APIKEY",APIkey )
                 .url(url)       // HTTPアクセス POST送信 テスト確認用ページ
                 .post(body)
                 .build();
-
+        Log.d("NaturalLanguageProcessing","変数requestは「"+request+"」");
         OkHttpClient client = new OkHttpClient();
 
         try {
@@ -49,6 +57,7 @@ public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
         catch (IOException e) {
             e.printStackTrace();
         }
+        Log.d("NaturalLanguageProcessing","変数 utf は「" + utf + "」");
         Log.d("NaturalLanguageProcessing","変数 res は「" + res + "」");
         return res;
 
@@ -66,3 +75,5 @@ public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
 
 
 }
+
+

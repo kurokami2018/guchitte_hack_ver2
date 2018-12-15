@@ -1,8 +1,11 @@
 package com.example.kurokami.guchitte_hacku_ver2;
 
-import android.os.Bundle;
+import android.os.AsyncTask;
+import android.util.Log;
+
 import okhttp3.*;
 import java.io.IOException;
+
 
 
 
@@ -10,23 +13,20 @@ import java.io.IOException;
  * Created by konnoyuma on 2018/12/12.
  */
 
-public class NaturalLanguageProcessing extends MainActivity {
+public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
     String input;
     String res;
-    NaturalLanguageProcessing(String str){
-        input=str;
+    NaturalLanguageProcessing(){
+        super();
     }
+
+    public void setInput( String input ) {
+        this.input = input;
+    }
+    public String getRes(){return res;}
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        post();
-        //resに結果がすでに入っている
-        System.out.print( res );
-
-
-    }
-    private void post() {
+    protected String doInBackground( Void... voids ) {
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         RequestBody body = RequestBody.create( JSON,input );
 
@@ -42,15 +42,27 @@ public class NaturalLanguageProcessing extends MainActivity {
 
         OkHttpClient client = new OkHttpClient();
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {e.printStackTrace();}
+        try {
+            Response response = client.newCall(request).execute();
+            res = response.body().string();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        Log.d("NaturalLanguageProcessing","変数 res は「" + res + "」");
+        return res;
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                res = response.body().string();
-            }
-        });
     }
+
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
+
+    @Override
+    protected void onPostExecute( String s ) {
+        super.onPostExecute( s );
+    }
+
 
 }

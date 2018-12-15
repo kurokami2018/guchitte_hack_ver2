@@ -4,14 +4,14 @@ import android.os.Bundle;
 import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageButton;
 import android.view.View;
-
+/*
 public class Parry extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parry);
 
-        ImageButton imageButton = (ImageButton) findViewById(R.id.image_button);
+        ImageButton imageButton = (ImageButton) findViewById(R.id.imageBottun);
         final AnimationDrawable animationDrawable = (AnimationDrawable) imageButton.getDrawable();
 
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -23,3 +23,4 @@ public class Parry extends AppCompatActivity{
         });
     }
 }
+*/

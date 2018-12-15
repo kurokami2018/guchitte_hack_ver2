@@ -3,6 +3,7 @@ package com.example.kurokami.guchitte_hacku_ver2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,9 @@ import android.widget.TextView;
 import java.util.*;
 import android.util.Log;
 import java.lang.*;
+import android.os.StrictMode;
 
+import static android.os.Build.VERSION.*;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         spf = getSharedPreferences("data", Context.MODE_PRIVATE);
         gruCounter=getGruCounter(getThisMonth(),spf);
@@ -48,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
         e.putInt("lastMonth_data", month);//キーをnew_monthとしてmonthをプレファレンスに保存
         e.commit();//保存実行
 
+
+
     }
+
     //onResume
     protected void onResume() {
         super.onResume();
@@ -62,8 +69,12 @@ public class MainActivity extends AppCompatActivity {
                 EditText editText = (EditText) findViewById(R.id.editText);
                 TextView textView = (TextView) findViewById(R.id.textView);
                 String str = editText.getText().toString();
-                NaturalLanguageProcessing ai = new NaturalLanguageProcessing((String)str);
-                Log.d("onClick","変数 ai.res は「" + ai.res + "」");
+                NaturalLanguageProcessing ai = new NaturalLanguageProcessing();
+                ai.setInput( str );
+                ai.execute();
+                Log.d("onClick","変数 ai.input は「" + ai.input + "」");
+                //Log.d("onClick","変数 ai.res は「" + ai.res + "」");
+                Log.d("NaturalLanguageProcessing","get.res() は「" + ai.getRes() + "」");
                 InputMessage.inputMessage(editText,textView);
                 MixLeave();
                 int month = getThisMonth(); //月を取得
@@ -162,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
 
     /*
     //葉っぱのエフェクト効果設定

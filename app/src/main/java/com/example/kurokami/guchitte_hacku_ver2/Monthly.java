@@ -54,7 +54,7 @@ public class Monthly extends AppCompatActivity {
 
         for (int i = 1; i <= month; i++) displayBottles( i );
 
-        //---Parryへ移動---
+        //---ビンがあったらParryへ移動---
 
         ImageButton parryButton = (ImageButton) findViewById(R.id.top_d);
         parryButton.setVisibility(View.INVISIBLE);

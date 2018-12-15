@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         setContentView(R.layout.activity_main);
         backgroundChange();
+        limitedCounter=spf.getInt( "limitedCounter",0 );
 
         //呟きを入力・消えるview
         ImageButton button = (ImageButton) findViewById(R.id.button);
@@ -92,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 //int[] data = makeArray(spf);
 
                 intent.putExtra("resetFlag",resetFlag);
-                intent.putExtra( "counter",limitedCounter );
+                intent.putExtra( "limitedCounter",limitedCounter );
                 startActivity(intent);
             }
         });
@@ -100,25 +101,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /*
-    void forBeginner() {
-        boolean before = AppLaunchChecker.hasStartedFromLauncher(this);
-        if (before == false) {
-            ImageView imageView = new ImageView(this);
-            imageView.setImageResource(com.example.kurokami.guchitte_hacku_ver2.R.drawable.exp);
-            setContentView(imageView);
-            //ファイル名わかったら書き換えること
-
-            //タップされたら画面を閉じるみたいな機能をつけて完了のはず
-        }
-    }
-    */
-
     void deleteMonthLog(SharedPreferences spf){//ArrayListの中身だけ消去する
         SharedPreferences.Editor e = spf.edit();
         e.remove("gruCounter_1");e.remove("gruCounter_2");e.remove("gruCounter_3");e.remove("gruCounter_4");e.remove("gruCounter_5");e.remove("gruCounter_6");
         e.remove("gruCounter_7");e.remove("gruCounter_8");e.remove("gruCounter_9");e.remove("gruCounter_10");e.remove("gruCounter_11");e.remove("gruCounter_12");
-        //e.clear();
+       // e.clear();
         e.commit();
     }
 
@@ -131,12 +118,13 @@ public class MainActivity extends AppCompatActivity {
     void addGruCounter(int month,SharedPreferences spf){//gruCounterに++するメソッド引数なし、リターンもなし
         SharedPreferences.Editor e = spf.edit();
         String strMonth=String.valueOf(month);
-        gruCounter++;
-        limitedCounter=(limitedCounter%180)+1;
-        e.putInt("gruCounter_"+strMonth,gruCounter);
+        //gruCounter++;
+        //limitedCounter=(limitedCounter%180)+1;
+        if(limitedCounter<180)limitedCounter++;
+        e.putInt("gruCounter_"+strMonth,limitedCounter);
         e.putInt( "limitedCounter",limitedCounter);
         e.commit();
-        if(gruCounter%30==0 && gruCounter<=180) {
+        if(limitedCounter%30==0 && limitedCounter<=180) {
             Intent intent = new Intent(MainActivity.this,com.example.kurokami.guchitte_hacku_ver2.GifPlayer_MakeBottle.class);
             startActivity(intent);
         }

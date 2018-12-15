@@ -47,7 +47,7 @@ public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
                 .url(url)       // HTTPアクセス POST送信 テスト確認用ページ
                 .post(body)
                 .build();
-        Log.d("NaturalLanguageProcessing","変数requestは「"+request+"」");
+        //Log.d("NaturalLanguageProcessing","変数requestは「"+request+"」");
         OkHttpClient client = new OkHttpClient();
 
         try {
@@ -57,8 +57,8 @@ public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
         catch (IOException e) {
             e.printStackTrace();
         }
-        Log.d("NaturalLanguageProcessing","変数 utf は「" + utf + "」");
-        Log.d("NaturalLanguageProcessing","変数 res は「" + res + "」");
+        //Log.d("NaturalLanguageProcessing","変数 utf は「" + utf + "」");
+        //Log.d("NaturalLanguageProcessing","変数 res は「" + res + "」");
         return res;
 
     }

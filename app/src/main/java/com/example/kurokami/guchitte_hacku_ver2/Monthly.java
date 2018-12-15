@@ -9,6 +9,10 @@ import android.widget.ImageView;
 import java.util.Calendar;
 import java.util.Random;
 
+import android.view.View;
+import android.widget.ImageButton;
+import java.lang.*;
+
 public class Monthly extends AppCompatActivity {
 
     //activity_main.xml(つぶやき画面)から移動するためのコード
@@ -49,6 +53,17 @@ public class Monthly extends AppCompatActivity {
         for (int i = 0; i < incremental; i++) choiceAndSetBottle( month );
 
         for (int i = 1; i <= month; i++) displayBottles( i );
+
+        //---Parryへ移動---
+        ImageButton parryButton = (ImageButton) findViewById(R.id.top_d);
+        parryButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // parry 画面を起動
+                Intent intent = new Intent(Monthly.this,com.example.kurokami.guchitte_hacku_ver2.Parry.class);
+                startActivity(intent);
+            }
+        });
+        //-------
 
     }
 

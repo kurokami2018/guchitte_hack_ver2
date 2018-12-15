@@ -1,4 +1,5 @@
 package com.example.kurokami.guchitte_hacku_ver2;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.graphics.drawable.AnimationDrawable;
@@ -21,5 +22,7 @@ public class Parry extends AppCompatActivity{
                 animationDrawable.start();
             }
         });
+
+
     }
 }

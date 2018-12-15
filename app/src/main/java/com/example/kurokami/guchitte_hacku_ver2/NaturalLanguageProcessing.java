@@ -82,11 +82,15 @@ public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
     }
     public void setSplitStr(String res) {
         String[] split = res.split(",", 0);
-        int i=0;
-       /* split[0]
+        int i=0,n=0;
+        String str=split[1];
+        str= str.replaceAll("\"count\":","");
+        n = Integer.parseInt(str);
         for(int j=3; j<n;j+=3){
-            splitRes[i++]=split[j];
-        }*/
+            splitRes[i]=split[j];
+            splitRes[i]=splitRes[i].substring(18,splitRes[i].length()-1);
+            i++;
+        }
 
 
     }

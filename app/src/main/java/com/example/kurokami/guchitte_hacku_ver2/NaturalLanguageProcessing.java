@@ -18,6 +18,8 @@ import java.io.IOException;
 public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
     String input;
     String res,utf;
+    String[] splitRes;
+
     NaturalLanguageProcessing(){
         super();
     }
@@ -47,7 +49,7 @@ public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
                 .url(url)       // HTTPアクセス POST送信 テスト確認用ページ
                 .post(body)
                 .build();
-        //Log.d("NaturalLanguageProcessing","変数requestは「"+request+"」");
+        Log.d("NaturalLanguageProcessing","変数requestは「"+request+"」");
         OkHttpClient client = new OkHttpClient();
 
         try {
@@ -57,8 +59,9 @@ public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
         catch (IOException e) {
             e.printStackTrace();
         }
-        //Log.d("NaturalLanguageProcessing","変数 utf は「" + utf + "」");
-        //Log.d("NaturalLanguageProcessing","変数 res は「" + res + "」");
+        Log.d("NaturalLanguageProcessing","変数 utf は「" + utf + "」");
+        Log.d("NaturalLanguageProcessing","変数 res は「" + res + "」");
+
         return res;
 
     }
@@ -70,10 +73,23 @@ public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute( String s ) {
+        setSplitStr(s);
         super.onPostExecute( s );
     }
 
+    public String[] getSplitStr(){
+        return splitRes;
+    }
+    public void setSplitStr(String res) {
+        String[] split = res.split(",", 0);
+        int i=0;
+       /* split[0]
+        for(int j=3; j<n;j+=3){
+            splitRes[i++]=split[j];
+        }*/
 
+
+    }
 }
 
 

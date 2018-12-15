@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         e.putInt("gruCounter_"+strMonth,limitedCounter);
         e.putInt( "limitedCounter",limitedCounter);
         e.commit();
-        if(limitedCounter%30==0 && limitedCounter<=180) {
+        if(limitedCounter%30==0 && limitedCounter<180) {
             Intent intent = new Intent(MainActivity.this,com.example.kurokami.guchitte_hacku_ver2.GifPlayer_MakeBottle.class);
             startActivity(intent);
         }
@@ -138,9 +138,10 @@ public class MainActivity extends AppCompatActivity {
     //愚痴カウンタに応じて背景画面の変更をします
     void backgroundChange(){
         ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.main);
-        if(limitedCounter %30<10)layout.setBackgroundResource(R.drawable.back_1_r);
-        if(limitedCounter %30>=10 && limitedCounter %30<=20)layout.setBackgroundResource(R.drawable.back_2_r);
-        if(limitedCounter %30>20)layout.setBackgroundResource(R.drawable.back_3_r);
+        if(limitedCounter==180)layout.setBackgroundResource(R.drawable.back_3_r);
+        else if(limitedCounter %30<10)layout.setBackgroundResource(R.drawable.back_1_r);
+        else if(limitedCounter %30>=10 && limitedCounter %30<20)layout.setBackgroundResource(R.drawable.back_2_r);
+        else if(limitedCounter %30>=20)layout.setBackgroundResource(R.drawable.back_3_r);
     }
 
     void MixLeave(){

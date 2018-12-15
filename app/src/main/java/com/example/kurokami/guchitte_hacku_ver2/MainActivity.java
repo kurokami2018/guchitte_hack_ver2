@@ -16,9 +16,7 @@ import android.widget.TextView;
 import java.util.*;
 import android.util.Log;
 import java.lang.*;
-import android.os.StrictMode;
 
-import static android.os.Build.VERSION.*;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -175,129 +173,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    /*
-    //葉っぱのエフェクト効果設定
-    void leaf(){
-        AlphaAnimation fadein_image = new AlphaAnimation(0.0f, 1.0f);
-        fadein_image.setDuration(1000);
-
-        ImageView img2 = (ImageView) findViewById(R.id.leaf_2);
-        img2.setImageResource(R.drawable.leaf_2);
-        img2.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img2);
-
-        ImageView img3 = (ImageView) findViewById(R.id.leaf_3);
-        img3.setImageResource(R.drawable.leaf_3);
-        img3.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img3);
-
-        ImageView img4 = (ImageView) findViewById(R.id.leaf_4);
-        img4.setImageResource(R.drawable.leaf_4);
-        img4.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img4);
-
-        ImageView img5 = (ImageView) findViewById(R.id.leaf_5);
-        img5.setImageResource(R.drawable.leaf_5);
-        img5.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img5);
-
-        ImageView img6 = (ImageView) findViewById(R.id.leaf_6);
-        img6.setImageResource(R.drawable.leaf_6);
-        img6.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img6);
-
-        ImageView img7 = (ImageView) findViewById(R.id.leaf_7);
-        img7.setImageResource(R.drawable.leaf_7);
-        img7.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img7);
-
-        ImageView img8 = (ImageView) findViewById(R.id.leaf_8);
-        img8.setImageResource(R.drawable.leaf_8);
-        img8.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img8);
-
-        ImageView img9 = (ImageView) findViewById(R.id.leaf_9);
-        img9.setImageResource(R.drawable.leaf_9);
-        img9.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img9);
-
-        ImageView img10 = (ImageView) findViewById(R.id.leaf_10);
-        img10.setImageResource(R.drawable.leaf_10);
-        img10.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img10);
-
-        ImageView img11 = (ImageView) findViewById(R.id.leaf_11);
-        img11.setImageResource(R.drawable.leaf_11);
-        img11.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img11);
-
-        ImageView img12 = (ImageView) findViewById(R.id.leaf_12);
-        img12.setImageResource(R.drawable.leaf_12);
-        img12.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img12);
-
-        ImageView img13 = (ImageView) findViewById(R.id.leaf_13);
-        img13.setImageResource(R.drawable.leaf_13);
-        img13.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img13);
-
-        ImageView img14 = (ImageView) findViewById(R.id.leaf_14);
-        img14.setImageResource(R.drawable.leaf_14);
-        img14.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img14);
-
-        ImageView img15 = (ImageView) findViewById(R.id.leaf_15);
-        img15.setImageResource(R.drawable.leaf_15);
-        img15.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img15);
-
-        ImageView img16 = (ImageView) findViewById(R.id.leaf_16);
-        img16.setImageResource(R.drawable.leaf_16);
-        img16.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img16);
-
-        ImageView img17 = (ImageView) findViewById(R.id.leaf_17);
-        img17.setImageResource(R.drawable.leaf_17);
-        img17.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img17);
-
-        ImageView img18 = (ImageView) findViewById(R.id.leaf_18);
-        img18.setImageResource(R.drawable.leaf_18);
-        img18.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img18);
-
-        ImageView img19 = (ImageView) findViewById(R.id.leaf_19);
-        img19.setImageResource(R.drawable.leaf_19);
-        img19.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img19);
-
-        ImageView img20 = (ImageView) findViewById(R.id.leaf_20);
-        img20.setImageResource(R.drawable.leaf_20);
-        img20.startAnimation(fadein_image);
-        DelGrumble.DelGrumble(img20);
-
-    }
-
-
-    int[] makeArray(SharedPreferences spf){
-
-        int jan = spf.getInt("1", 0);
-        int feb = spf.getInt("2", 0);
-        int mar = spf.getInt("3", 0);
-        int apr = spf.getInt("4", 0);
-        int may = spf.getInt("5", 0);
-        int jun = spf.getInt("6", 0);
-        int jul = spf.getInt("7", 0);
-        int aug = spf.getInt("8", 0);
-        int sep = spf.getInt("9", 0);
-        int oct = spf.getInt("10", 0);
-        int nov = spf.getInt("11", 0);
-        int dec = spf.getInt("12", 0);
-        int[] data = {jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec};
-        return data;
-
-    }
-    */
 
 }
 

@@ -3,7 +3,6 @@ package com.example.kurokami.guchitte_hacku_ver2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;

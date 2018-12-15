@@ -22,7 +22,7 @@ public class Parry extends AppCompatActivity{
                 animationDrawable.start();
             }
         });
-
+//
 
     }
 }

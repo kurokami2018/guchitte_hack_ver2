@@ -1,5 +1,8 @@
 package com.example.kurokami.guchitte_hacku_ver2;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -7,6 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import okhttp3.*;
 import java.io.IOException;
+import java.lang.*;
 
 
 
@@ -19,6 +23,9 @@ public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
     String input;
     String res,utf;
     String[] splitRes;
+    //private Context mContext;
+    //SharedPreferences aires;
+    //SharedPreferences.Editor e = aires.edit();
 
     NaturalLanguageProcessing(){
         super();
@@ -74,25 +81,29 @@ public class NaturalLanguageProcessing extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute( String s ) {
         setSplitStr(s);
+
+       // Intent intent = new Intent(this,com.example.kurokami.guchitte_hacku_ver2.MainActivity.class);
         super.onPostExecute( s );
     }
 
-    public String[] getSplitStr(){
-        return splitRes;
+    public void getSplitStr(String[] a){
+        a = splitRes;
     }
-    public void setSplitStr(String res) {
+    private void setSplitStr(String res) {
         String[] split = res.split(",", 0);
         int i=0,n=0;
         String str=split[1];
         str= str.replaceAll("\"count\":","");
         n = Integer.parseInt(str);
-        for(int j=3; j<n;j+=3){
-            splitRes[i]=split[j];
-            splitRes[i]=splitRes[i].substring(18,splitRes[i].length()-1);
+        for(int j=3; j<n;j+=3) {
+            splitRes[i] = split[j];
+            splitRes[i] = splitRes[i].substring(18, splitRes[i].length() - 1);
+            res+=splitRes[i];
             i++;
         }
-
-
+       // aires = mContext.getSharedPreferences("data",Context.MODE_PRIVATE);
+       // e.putStringSet(res,null);
+      //  e.commit();
     }
 }
 

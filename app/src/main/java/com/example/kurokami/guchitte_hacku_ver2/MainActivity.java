@@ -3,6 +3,7 @@ package com.example.kurokami.guchitte_hacku_ver2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     int gruCounter;
     int limitedCounter;
     int resetFlag=0;//新年じゃないのがデフォルト
-
+    String res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +68,18 @@ public class MainActivity extends AppCompatActivity {
                 EditText editText = (EditText) findViewById(R.id.editText);
                 TextView textView = (TextView) findViewById(R.id.textView);
                 String str = editText.getText().toString();
-                NaturalLanguageProcessing ai = new NaturalLanguageProcessing();
-                ai.setInput( str );
-                ai.execute();
-                Log.d("onClick","変数 ai.input は「" + ai.input + "」");
+                while(true) {
+                    if(str == null || str.isEmpty())break;
+                    NaturalLanguageProcessing ai = new NaturalLanguageProcessing();
+                    ai.setInput(str);
+                    ai.execute();
+                    break;
+                }
+                //Log.d("onClick","変数 ai.input は「" + ai.input + "」");
                 //Log.d("onClick","変数 ai.res は「" + ai.res + "」");
-                Log.d("NaturalLanguageProcessing","get.res() は「" + ai.getRes() + "」");
+                //res = spf.getString("aires","0");
+
+                //Log.d("onClick","res は「" + res + "」");
                 InputMessage.inputMessage(editText,textView);
                 MixLeave();
                 int month = getThisMonth(); //月を取得
